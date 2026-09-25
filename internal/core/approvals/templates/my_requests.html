@@ -1,0 +1,25 @@
+{{define "title"}}My requests{{end}}
+{{define "content"}}
+<h1>My requests</h1>
+{{if .Data}}
+<div class="overflow-auto">
+  <table>
+    <thead>
+      <tr><th scope="col">Request</th><th scope="col">Submitted</th><th scope="col">Status</th><th scope="col">With</th></tr>
+    </thead>
+    <tbody>
+      {{range .Data}}
+      <tr>
+        <td><a href="/requests/{{.ID}}">{{.Summary}}</a></td>
+        <td>{{.Submitted}}</td>
+        <td>{{.Status}}</td>
+        <td>{{.Approver}}</td>
+      </tr>
+      {{end}}
+    </tbody>
+  </table>
+</div>
+{{else}}
+<p>You have not made any requests yet.</p>
+{{end}}
+{{end}}
