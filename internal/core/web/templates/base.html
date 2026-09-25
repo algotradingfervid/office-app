@@ -1,0 +1,28 @@
+{{define "base"}}<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="htmx-config" content='{"allowEval":false,"includeIndicatorStyles":false}'>
+  <title>{{template "title" .}} · {{.AppName}}</title>
+  <link rel="stylesheet" href="/static/pico.min.css">
+  <link rel="stylesheet" href="/static/app.css">
+  <script src="/static/htmx.min.js" defer></script>
+</head>
+<body>
+  <header class="container">
+    <nav>
+      <ul><li><a href="/" class="brand">{{.AppName}}</a></li></ul>
+      {{if .User}}
+      <ul>
+        <li>{{.User.GetString "name"}}</li>
+        <li><form method="post" action="/logout"><button type="submit" class="secondary outline">Sign out</button></form></li>
+      </ul>
+      {{end}}
+    </nav>
+  </header>
+  <main class="container">
+    {{template "content" .}}
+  </main>
+</body>
+</html>{{end}}

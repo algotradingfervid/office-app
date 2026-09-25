@@ -6,3 +6,8 @@ node_modules/
 .claude/station
 __pycache__/
 factory/evidence/*/raw/
+
+# app
+bin/
+pb_data/
+.preview/

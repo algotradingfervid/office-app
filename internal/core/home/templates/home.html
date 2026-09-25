@@ -1,0 +1,5 @@
+{{define "title"}}Home{{end}}
+{{define "content"}}
+<h1>Welcome, {{.User.GetString "name"}}</h1>
+{{range .Data}}{{.}}{{else}}<p>Nothing here yet.</p>{{end}}
+{{end}}

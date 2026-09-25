@@ -1,0 +1,7 @@
+/* Stock styling on top of Pico. Replaced by the design-system retrofit story. */
+.brand { font-weight: 700; text-decoration: none; }
+nav form { margin: 0; }
+nav button { margin: 0; padding: 0.35rem 0.8rem; }
+.error { color: var(--pico-del-color); }
+.htmx-indicator { opacity: 0; transition: opacity 200ms ease-in; }
+.htmx-request .htmx-indicator, .htmx-request.htmx-indicator { opacity: 1; }
