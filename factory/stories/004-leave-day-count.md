@@ -4,7 +4,7 @@ title: A leave request's days are counted like the policy says
 tier: core
 lane: full
 kind: feature
-status: proving
+status: review
 needs: ["001", "003"]
 files: ["internal/forms/leave/daycount.go"]
 screen: none: no UI
@@ -12,7 +12,7 @@ check: "Days are counted per the design: weekly offs and holidays skipped, half-
 agent: claude-bg-004
 started: 2026-09-25 10:21
 built: 2026-09-25 10:24
-proved: 
+proved: 2026-09-25 10:25
 reviewed: 
 merged: 
 review-rounds: 0
