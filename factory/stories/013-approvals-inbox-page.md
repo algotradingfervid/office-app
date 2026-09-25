@@ -4,13 +4,13 @@ title: Approvers see what is waiting for them
 tier: core
 lane: full
 kind: feature
-status: ready
+status: building
 needs: ["010"]
 files: ["internal/core/approvals/inbox_page.go", "internal/core/approvals/templates/inbox.html"]
 screen: pending my approval (/approvals)
 check: "An approver sees only requests where they are the current approver, with requester, summary and waiting time; a non-approver is refused"
-agent: 
-started: 
+agent: claude-bg-013
+started: 2026-09-25 15:42
 built: 
 proved: 
 reviewed: 
