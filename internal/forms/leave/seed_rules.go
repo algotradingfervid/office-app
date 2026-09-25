@@ -3,7 +3,7 @@ package leave
 import "github.com/pocketbase/pocketbase/core"
 
 // defaultRule is one leave type with its rule from 2026-04-01 (design §5.2, leave policy §3–§5).
-// 0 means "none": no quota, no limit, no attachment needed.
+// What 0 means differs per field; see the leave_rules fields in 1790310300_leave.go.
 type defaultRule struct {
 	code, name, credit, count           string
 	perYear, monthly, maxRun, yearlyCap float64

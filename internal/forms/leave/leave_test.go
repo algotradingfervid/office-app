@@ -130,7 +130,7 @@ func TestRuleForPicksVersion(t *testing.T) {
 	}
 }
 
-func ledgerEntry(t *testing.T, app *tests.TestApp, entryType, periodKey string, days float64) *core.Record {
+func ledgerEntry(t *testing.T, app *tests.TestApp, year, entryType, periodKey string, days float64) *core.Record {
 	t.Helper()
 	emp, err := app.FindFirstRecordByData("users", "employee_code", "E001")
 	if err != nil {
@@ -147,7 +147,7 @@ func ledgerEntry(t *testing.T, app *tests.TestApp, entryType, periodKey string, 
 	r := core.NewRecord(col)
 	r.Set("employee", emp.Id)
 	r.Set("leave_type", cl.Id)
-	r.Set("leave_year", "2026-27")
+	r.Set("leave_year", year)
 	r.Set("entry_type", entryType)
 	r.Set("days", days)
 	r.Set("period_key", periodKey)
@@ -156,7 +156,7 @@ func ledgerEntry(t *testing.T, app *tests.TestApp, entryType, periodKey string, 
 
 func TestLedgerAppendOnly(t *testing.T) {
 	app := testapp.New(t)
-	e := ledgerEntry(t, app, "credit", "2026-11", 1)
+	e := ledgerEntry(t, app, "2026-27", "credit", "2026-11", 1)
 	if err := app.Save(e); err != nil {
 		t.Fatal(err)
 	}
@@ -178,56 +178,85 @@ func TestLedgerAppendOnly(t *testing.T) {
 
 func TestLedgerPeriodKeyUnique(t *testing.T) {
 	app := testapp.New(t)
-	if err := app.Save(ledgerEntry(t, app, "credit", "2026-11", 1)); err != nil {
+	if err := app.Save(ledgerEntry(t, app, "2026-27", "credit", "2026-11", 1)); err != nil {
 		t.Fatal(err)
 	}
-	if err := app.Save(ledgerEntry(t, app, "credit", "2026-11", 1)); err == nil {
+	if err := app.Save(ledgerEntry(t, app, "2026-27", "credit", "2026-11", 1)); err == nil {
 		t.Error("a second credit for 2026-11 was saved")
 	}
-	if err := app.Save(ledgerEntry(t, app, "credit", "2026-12", 1)); err != nil {
+	if err := app.Save(ledgerEntry(t, app, "2026-27", "credit", "2026-12", 1)); err != nil {
 		t.Errorf("credit for another period: %v", err)
 	}
 	for i := 0; i < 2; i++ {
-		if err := app.Save(ledgerEntry(t, app, "adjustment", "", 0.5)); err != nil {
+		if err := app.Save(ledgerEntry(t, app, "2026-27", "adjustment", "", 0.5)); err != nil {
 			t.Errorf("adjustment %d without period key: %v", i+1, err)
 		}
 	}
+	// Year close (design §5.5) carries forward out of 2026-27 and into 2027-28 under one period key.
+	if err := app.Save(ledgerEntry(t, app, "2026-27", "carry_forward", "2026-27-close", -4)); err != nil {
+		t.Fatal(err)
+	}
+	if err := app.Save(ledgerEntry(t, app, "2027-28", "carry_forward", "2026-27-close", 4)); err != nil {
+		t.Errorf("carry forward into the new year: %v", err)
+	}
+	if err := app.Save(ledgerEntry(t, app, "2026-27", "carry_forward", "2026-27-close", -4)); err == nil {
+		t.Error("a second carry forward out of 2026-27 was saved")
+	}
 }
 
+// Every day-counting field accepts halves and refuses anything finer.
 func TestDaysAreHalves(t *testing.T) {
 	app := testapp.New(t)
-	cases := map[float64]bool{0.5: true, -1.5: true, 2: true, 0.25: false, 1.3: false, -0.75: false}
-	for days, ok := range cases {
-		err := app.Save(ledgerEntry(t, app, "adjustment", "", days))
-		if (err == nil) != ok {
-			t.Errorf("ledger days %v: err = %v, want ok = %v", days, err, ok)
+	rule := func() *core.Record {
+		r, err := leave.RuleFor(app, "EL", "2026-10-12")
+		if err != nil {
+			t.Fatal(err)
+		}
+		return r
+	}
+	request := func() *core.Record {
+		col, err := app.FindCollectionByNameOrId("leave_requests")
+		if err != nil {
+			t.Fatal(err)
+		}
+		el := rule()
+		r := core.NewRecord(col)
+		r.Set("leave_type", el.GetString("leave_type"))
+		r.Set("from_date", "2026-10-12")
+		r.Set("from_session", "full")
+		r.Set("to_date", "2026-10-13")
+		r.Set("to_session", "first_half")
+		r.Set("days", 1.5)
+		r.Set("leave_year", "2026-27")
+		r.Set("rule", el.Id)
+		return r
+	}
+	ledger := func() *core.Record { return ledgerEntry(t, app, "2026-27", "adjustment", "", 1) }
+	cases := []struct {
+		field  string
+		record func() *core.Record
+	}{
+		{"days", ledger},
+		{"days", request},
+		{"days_per_year", rule},
+		{"monthly_credit", rule},
+		{"max_consecutive_days", rule},
+		{"yearly_cap", rule},
+		{"attachment_after_days", rule},
+		{"carry_forward_cap", rule},
+	}
+	for _, c := range cases {
+		for value, ok := range map[float64]bool{1.5: true, 0.25: false} {
+			r := c.record()
+			r.Set(c.field, value)
+			if err := app.Save(r); (err == nil) != ok {
+				t.Errorf("%s.%s = %v: err = %v, want ok = %v", r.Collection().Name, c.field, value, err, ok)
+			}
 		}
 	}
-	rule, err := leave.RuleFor(app, "EL", "2026-10-12")
-	if err != nil {
-		t.Fatal(err)
-	}
-	rule.Set("monthly_credit", 1.25)
-	if err := app.Save(rule); err == nil {
-		t.Error("a rule with monthly_credit 1.25 was saved")
-	}
-
-	col, err := app.FindCollectionByNameOrId("leave_requests")
-	if err != nil {
-		t.Fatal(err)
-	}
-	for days, ok := range map[float64]bool{1.5: true, 1.25: false} {
-		req := core.NewRecord(col)
-		req.Set("leave_type", rule.GetString("leave_type"))
-		req.Set("from_date", "2026-10-12")
-		req.Set("from_session", "full")
-		req.Set("to_date", "2026-10-13")
-		req.Set("to_session", "first_half")
-		req.Set("days", days)
-		req.Set("leave_year", "2026-27")
-		req.Set("rule", rule.Id)
-		if err := app.Save(req); (err == nil) != ok {
-			t.Errorf("leave request days %v: err = %v, want ok = %v", days, err, ok)
+	for value, ok := range map[float64]bool{-1.5: true, -0.75: false} {
+		if err := app.Save(ledgerEntry(t, app, "2026-27", "adjustment", "", value)); (err == nil) != ok {
+			t.Errorf("ledger days %v: err = %v, want ok = %v", value, err, ok)
 		}
 	}
 }

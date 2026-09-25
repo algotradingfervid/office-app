@@ -9,6 +9,7 @@ import (
 )
 
 // LeaveYear returns the leave year (1 April – 31 March) of a YYYY-MM-DD date, written "2026-27".
+// date must already be a valid YYYY-MM-DD (every date field is pattern-validated).
 func LeaveYear(date string) string {
 	year, _ := strconv.Atoi(date[:4])
 	if date[5:7] < "04" {

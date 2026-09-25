@@ -6,7 +6,8 @@ import (
 )
 
 // Creates the leave collections (design §5.2) and seeds the default types and rules.
-// API rules stay nil: no REST access. A nullable number of §5.2 is stored as 0, meaning "none".
+// API rules stay nil: no REST access. PocketBase numbers cannot be empty, so each leave_rules
+// number says below what 0 means.
 // leave_requests.request and leave_ledger.request (relations to requests) come in their own migration.
 func init() {
 	m.Register(func(app core.App) error {
@@ -33,18 +34,18 @@ func init() {
 		rules.Fields.Add(
 			&core.RelationField{Name: "leave_type", CollectionId: types.Id, MaxSelect: 1, Required: true},
 			&core.TextField{Name: "effective_from", Required: true, Pattern: datePattern},
-			&core.NumberField{Name: "days_per_year", Min: &zero},
+			&core.NumberField{Name: "days_per_year", Min: &zero}, // 0 = no quota (no balance)
 			&core.SelectField{Name: "credit_method", Values: []string{"yearly", "monthly", "per_event"}, MaxSelect: 1, Required: true},
 			&core.NumberField{Name: "monthly_credit", Min: &zero},
 			&core.SelectField{Name: "count_mode", Values: []string{"working_days", "calendar_days"}, MaxSelect: 1, Required: true},
-			&core.NumberField{Name: "max_consecutive_days", Min: &zero},
-			&core.NumberField{Name: "yearly_cap", Min: &zero},
-			&core.NumberField{Name: "max_times_per_employment", Min: &zero, OnlyInt: true},
-			&core.NumberField{Name: "min_notice_days", Min: &zero, OnlyInt: true},
-			&core.NumberField{Name: "max_backdate_days", Min: &zero, OnlyInt: true},
+			&core.NumberField{Name: "max_consecutive_days", Min: &zero},                    // 0 = no limit
+			&core.NumberField{Name: "yearly_cap", Min: &zero},                              // 0 = no cap
+			&core.NumberField{Name: "max_times_per_employment", Min: &zero, OnlyInt: true}, // 0 = no limit
+			&core.NumberField{Name: "min_notice_days", Min: &zero, OnlyInt: true},          // 0 = no notice needed
+			&core.NumberField{Name: "max_backdate_days", Min: &zero, OnlyInt: true},        // 0 = a real zero: no backdating
 			&core.BoolField{Name: "half_day_allowed"},
-			&core.NumberField{Name: "attachment_after_days", Min: &zero},
-			&core.NumberField{Name: "carry_forward_cap", Min: &zero},
+			&core.NumberField{Name: "attachment_after_days", Min: &zero}, // 0 = no attachment needed
+			&core.NumberField{Name: "carry_forward_cap", Min: &zero},     // 0 = a real zero: everything lapses at year close
 			&core.BoolField{Name: "encashable"},
 			&core.BoolField{Name: "allowed_in_probation"},
 		)
@@ -84,7 +85,7 @@ func init() {
 			&core.TextField{Name: "note", Max: 500},
 			&core.RelationField{Name: "created_by", CollectionId: users.Id, MaxSelect: 1},
 		)
-		ledger.AddIndex("idx_leave_ledger_period", true, "employee, leave_type, entry_type, period_key", "period_key != ''")
+		ledger.AddIndex("idx_leave_ledger_period", true, "employee, leave_type, entry_type, leave_year, period_key", "period_key != ''")
 		if err := app.Save(ledger); err != nil {
 			return err
 		}
