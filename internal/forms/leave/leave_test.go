@@ -221,6 +221,7 @@ func TestDaysAreHalves(t *testing.T) {
 		}
 		el := rule()
 		r := core.NewRecord(col)
+		r.Set("request", approvalRequest(t, app).Id)
 		r.Set("leave_type", el.GetString("leave_type"))
 		r.Set("from_date", "2026-10-12")
 		r.Set("from_session", "full")
