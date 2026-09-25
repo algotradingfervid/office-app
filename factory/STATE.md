@@ -1,7 +1,7 @@
 # STATE — the floor board
 <!-- One screen: at most 60 lines. Dated notes and history go to factory/HISTORY.md. -->
 
-product-name: unnamed (working: Office App)
+product-name: Placet
 kit-version: see factory/KIT-VERSION.md
 
 ## Floor 1: prove it
@@ -13,7 +13,7 @@ blueprint: done            # skeleton: login + home; make check passes; scripts/
 tool-up: done              # line-open: 2026-09-25 (two trial runs on story 001; kit fixes in lessons LOG)
 
 ## Floor 2: make it a product (design-timing: see DIALS.md)
-name-it: pending
+name-it: done              # Placet, picked 2026-09-25
 brand: pending
 design-system: pending
 wireframe: pending

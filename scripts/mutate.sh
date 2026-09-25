@@ -3,6 +3,8 @@
 # Uses gremlins (github.com/go-gremlins/gremlins v0.6.0) limited to lines changed since base (origin/main or main).
 # Prints every LIVED mutant (a test ran the code but nothing failed) as file:line and exits 1 if there is one.
 # NOT COVERED mutants (no test reaches the line, usually `if err != nil` returns) are listed for information.
+# TIMED OUT mutants usually mean the machine is overloaded, not that tests caught them: they fail the run so a
+# busy machine cannot produce an empty PASS. Rerun later or raise MUTATE_TIMEOUT_COEF (default 10).
 # Raw JSON and log go to factory/evidence/<id>/raw/ (git-ignored). cmd/ and internal/testapp/ are skipped.
 # Install once: go install github.com/go-gremlins/gremlins/cmd/gremlins@v0.6.0
 set -euo pipefail
@@ -27,19 +29,19 @@ if [ -z "$changed" ]; then
 fi
 echo "mutation: base $base; changed files:"
 echo "$changed" | sed 's/^/  /'
-gremlins unleash --diff "$base" --exclude-files '^cmd/' --exclude-files '^internal/testapp/' \
+gremlins unleash --diff "$base" --timeout-coefficient "${MUTATE_TIMEOUT_COEF:-10}" --exclude-files '^cmd/' --exclude-files '^internal/testapp/' \
   --output "$out/mutation.json" . >"$out/mutation.log" 2>&1 || true
 python3 - "$out/mutation.json" <<'EOF'
 import json, sys
 data = json.load(open(sys.argv[1]))
-rows = {"KILLED": [], "LIVED": [], "NOT COVERED": []}
+rows = {"KILLED": [], "LIVED": [], "NOT COVERED": [], "TIMED OUT": []}
 for f in data.get("files", []):
     for m in f.get("mutations", []):
         if m.get("status") in rows:
             rows[m["status"]].append(f'{f["file_name"]}:{m["line"]}:{m["column"]}  {m["type"]}')
-print(f'mutation: killed {len(rows["KILLED"])}, lived {len(rows["LIVED"])}, not covered {len(rows["NOT COVERED"])}')
-for label in ("LIVED", "NOT COVERED"):
+print(f'mutation: killed {len(rows["KILLED"])}, lived {len(rows["LIVED"])}, not covered {len(rows["NOT COVERED"])}, timed out {len(rows["TIMED OUT"])}')
+for label in ("LIVED", "TIMED OUT", "NOT COVERED"):
     for r in rows[label]:
         print(f"  {label:<11} {r}")
-sys.exit(1 if rows["LIVED"] else 0)
+sys.exit(1 if rows["LIVED"] or rows["TIMED OUT"] else 0)
 EOF
