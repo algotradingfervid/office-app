@@ -4,7 +4,7 @@ title: Balances come from the ledger
 tier: core
 lane: full
 kind: feature
-status: proving
+status: review
 needs: ["003"]
 files: ["internal/forms/leave/balance.go", "internal/forms/leave/seed_balances.go"]
 screen: none: no UI
@@ -12,7 +12,7 @@ check: "An employee's balance is the sum of their ledger entries for a type and 
 agent: claude-bg-005
 started: 2026-09-25 10:21
 built: 2026-09-25 10:24
-proved: 
+proved: 2026-09-25 10:25
 reviewed: 
 merged: 
 review-rounds: 0
