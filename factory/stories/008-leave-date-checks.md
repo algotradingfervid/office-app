@@ -4,7 +4,7 @@ title: Leave dates are checked before submit
 tier: core
 lane: full
 kind: feature
-status: proving
+status: review
 needs: ["002", "003", "021"]
 files: ["internal/forms/leave/policy_dates.go"]
 screen: none: no UI
@@ -12,7 +12,7 @@ check: "A leave request is refused when its type is inactive or barred in probat
 agent: claude-bg-008
 started: 2026-09-25 10:50
 built: 2026-09-25 11:03
-proved: 
+proved: 2026-09-25 11:11
 reviewed: 
 merged: 
 review-rounds: 0
