@@ -11,7 +11,7 @@ screen: pending my approval (/approvals)
 check: "An approver sees only requests where they are the current approver, with requester, summary and waiting time; a non-approver is refused"
 agent: claude-bg-013
 started: 2026-09-25 15:42
-built: 2026-09-25 16:10
+built: 2026-09-25 15:44
 proved: 2026-09-25 15:46
 reviewed: 
 merged: 
