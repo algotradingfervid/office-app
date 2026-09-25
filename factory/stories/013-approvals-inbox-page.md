@@ -4,7 +4,7 @@ title: Approvers see what is waiting for them
 tier: core
 lane: full
 kind: feature
-status: proving
+status: review
 needs: ["010"]
 files: ["internal/core/approvals/inbox_page.go", "internal/core/approvals/templates/inbox.html"]
 screen: pending my approval (/approvals)
@@ -12,7 +12,7 @@ check: "An approver sees only requests where they are the current approver, with
 agent: claude-bg-013
 started: 2026-09-25 15:42
 built: 2026-09-25 16:10
-proved: 
+proved: 2026-09-25 15:46
 reviewed: 
 merged: 
 review-rounds: 0
