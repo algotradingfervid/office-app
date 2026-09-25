@@ -39,8 +39,10 @@ func DateChecks(app core.App, c clock.Clock, lr *core.Record) ([]string, error) 
 	if !lt.GetBool("active") {
 		return nil, &approvals.UserError{Message: name + " cannot be applied for at present."}
 	}
-	if today < employee.GetString("probation_end") && !rule.GetBool("allowed_in_probation") {
-		return nil, &approvals.UserError{Message: name + " cannot be taken during probation."}
+	// Probation is judged by the leave dates (§5.3 check 1): probation_end is the confirmation date, empty = none.
+	if confirmed := employee.GetString("probation_end"); lr.GetString("from_date") < confirmed && !rule.GetBool("allowed_in_probation") {
+		return nil, &approvals.UserError{Message: fmt.Sprintf(
+			"%s cannot be taken during probation. It can start on or after your confirmation date, %s.", name, confirmed)}
 	}
 
 	from, to := lr.GetString("from_date"), lr.GetString("to_date")

@@ -86,7 +86,7 @@ func TestDateChecks(t *testing.T) {
 	cases := []struct {
 		name     string
 		existing []leaveRow
-		probEnd  string // E001's probation_end when set; the seed's 2024-12-03 is past
+		probEnd  string // E001's probation_end when set ("none" = empty); the seed's 2024-12-03 is past
 		req      leaveRow
 		message  string // "" = allowed
 		warning  string
@@ -95,12 +95,14 @@ func TestDateChecks(t *testing.T) {
 
 		{name: "inactive type refused", req: pending("CO", "2026-10-12", "full", "2026-10-12", "full"),
 			message: "Compensatory Off cannot be applied for at present."},
-		{name: "EL in probation refused", probEnd: "2026-12-01", req: pending("EL", "2026-10-20", "full", "2026-10-20", "full"),
-			message: "Earned Leave cannot be taken during probation."},
-		{name: "EL on the last day of probation refused", probEnd: "2026-10-06", req: pending("EL", "2026-10-20", "full", "2026-10-20", "full"),
-			message: "Earned Leave cannot be taken during probation."},
-		{name: "EL on the day probation ends allowed", probEnd: "2026-10-05", req: pending("EL", "2026-10-20", "full", "2026-10-20", "full")},
-		{name: "CL in probation allowed", probEnd: "2026-12-01", req: pending("CL", "2026-10-12", "full", "2026-10-12", "full")},
+		{name: "EL starting in probation refused", probEnd: "2026-12-01", req: pending("EL", "2026-10-20", "full", "2026-10-20", "full"),
+			message: "Earned Leave cannot be taken during probation. It can start on or after your confirmation date, 2026-12-01."},
+		{name: "EL after probation applied for during probation allowed", probEnd: "2026-10-20", req: pending("EL", "2026-11-10", "full", "2026-11-10", "full")},
+		{name: "EL starting the day before confirmation refused", probEnd: "2026-10-20", req: pending("EL", "2026-10-19", "full", "2026-10-21", "full"),
+			message: "Earned Leave cannot be taken during probation. It can start on or after your confirmation date, 2026-10-20."},
+		{name: "EL starting on the confirmation date allowed", probEnd: "2026-10-20", req: pending("EL", "2026-10-20", "full", "2026-10-20", "full")},
+		{name: "CL in probation allowed", probEnd: "2026-10-20", req: pending("CL", "2026-10-12", "full", "2026-10-12", "full")},
+		{name: "EL with no probation_end allowed", probEnd: "none", req: pending("EL", "2026-10-19", "full", "2026-10-19", "full")},
 
 		{name: "end before start refused", req: pending("CL", "2026-10-13", "full", "2026-10-12", "full"),
 			message: "The leave cannot end before it starts."},
@@ -157,7 +159,11 @@ func TestDateChecks(t *testing.T) {
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
 			app := testapp.New(t)
-			if c.probEnd != "" {
+			switch c.probEnd {
+			case "":
+			case "none":
+				setProbationEnd(t, app, "E001", "")
+			default:
 				setProbationEnd(t, app, "E001", c.probEnd)
 			}
 			for _, e := range c.existing {
