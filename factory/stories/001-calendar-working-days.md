@@ -4,13 +4,13 @@ title: The calendar knows weekly offs and holidays
 tier: core
 lane: core
 kind: contract
-status: ready
+status: building
 needs: []
 files: ["internal/core/calendar/1790310100_calendar.go", "internal/core/calendar/workdays.go", "internal/core/calendar/seed.go"]
 screen: none: no UI
 check: "For 2026-27, Sundays, 2nd and 4th Saturdays and seeded holidays are non-working days; every other date is a working day"
-agent: 
-started: 
+agent: claude-bg-001
+started: 2026-09-25 09:56
 built: 
 proved: 
 reviewed: 
