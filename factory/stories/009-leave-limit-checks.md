@@ -5,7 +5,7 @@ tier: core
 lane: full
 kind: feature
 status: backlog
-needs: ["002", "004", "005"]
+needs: ["002", "004", "005", "021"]
 files: ["internal/forms/leave/policy_limits.go"]
 screen: none: no UI
 check: "A leave request is refused when it exceeds the consecutive-day limit (adjacent requests included), the available balance, the yearly cap, or the once-per-employment limit, or lacks a required attachment; LOP while paid leave remains is a warning"

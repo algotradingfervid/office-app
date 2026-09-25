@@ -5,7 +5,7 @@ tier: core
 lane: full
 kind: feature
 status: backlog
-needs: ["008", "009", "005"]
+needs: ["008", "009", "005", "021"]
 files: ["internal/forms/leave/form_hooks.go"]
 screen: none: no UI
 check: "The leave form is registered with approvals: its Validate runs the date and limit checks and recomputes days, final approval writes one debit per request, and its summary reads like 'CL · 12–13 Oct 2026 · 2 days'"

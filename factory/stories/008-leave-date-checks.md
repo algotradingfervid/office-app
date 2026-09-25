@@ -5,7 +5,7 @@ tier: core
 lane: full
 kind: feature
 status: backlog
-needs: ["002", "003"]
+needs: ["002", "003", "021"]
 files: ["internal/forms/leave/policy_dates.go"]
 screen: none: no UI
 check: "A leave request is refused when its type is inactive or barred in probation, it crosses 31 March, it overlaps the employee's own leave, or it is backdated too far; short notice is only a warning"
