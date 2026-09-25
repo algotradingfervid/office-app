@@ -4,14 +4,14 @@ title: Home shows my leave balances
 tier: core
 lane: core
 kind: feature
-status: building
+status: proving
 needs: ["005", "022"]
 files: ["internal/forms/leave/home_card.go", "internal/forms/leave/templates/balance_card.html"]
 screen: home (/)
 check: "After signing in, E001 sees cards for CL 4, SL 8 and EL 10.5 with available days on the home page"
 agent: claude-bg-007
 started: 2026-09-25 15:42
-built: 
+built: 2026-09-25 16:05
 proved: 
 reviewed: 
 merged: 
