@@ -7,8 +7,12 @@ cmd="$(printf '%s' "$input" | sed -n 's/.*"command"[[:space:]]*:[[:space:]]*"\(.
 [ -z "$cmd" ] && exit 0
 
 case "$cmd" in
-  *"git commit"*|*"git push"*|*"git merge"*)
-    branch="$(git branch --show-current 2>/dev/null || true)"
+  *"git "*" commit"*|*"git commit"*|*"git "*" push"*|*"git push"*|*"git "*" merge"*|*"git merge"*)
+    # The command may run elsewhere than the session: `cd <dir> && ...` or `git -C <dir> ...`.
+    dir="$(printf '%s' "$cmd" | sed -n 's/^[[:space:]]*cd[[:space:]][[:space:]]*\([^;&|]*[^;&| ]\)[[:space:]]*&&.*/\1/p' | head -n1)"
+    [ -z "$dir" ] && dir="$(printf '%s' "$cmd" | sed -n 's/.*git[[:space:]][[:space:]]*-C[[:space:]][[:space:]]*\([^[:space:]]*\).*/\1/p' | head -n1)"
+    dir="$(printf '%s' "$dir" | tr -d "\\\\\"'")"
+    branch="$(git -C "${dir:-.}" branch --show-current 2>/dev/null || git branch --show-current 2>/dev/null || true)"
     if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
       case "$(cat .claude/station 2>/dev/null || true)" in
         blueprint|tool-up|shipshow-update|slice|isolate|learn|spike) exit 0 ;;

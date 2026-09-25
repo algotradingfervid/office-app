@@ -13,6 +13,9 @@ if [ -z "$base" ]; then
   base="origin/main"
   git rev-parse --verify -q "$base" >/dev/null || base="main"
 fi
+if [ -n "$(git status --porcelain -- . ':!factory/evidence' ':!factory/stories')" ]; then
+  echo "mutate: uncommitted changes; commit the story's code first (mutation runs on committed changes since $base)" >&2; exit 2
+fi
 command -v gremlins >/dev/null || { echo "gremlins not installed: go install github.com/go-gremlins/gremlins/cmd/gremlins@v0.6.0" >&2; exit 2; }
 out="factory/evidence/$id/raw"
 mkdir -p "$out"

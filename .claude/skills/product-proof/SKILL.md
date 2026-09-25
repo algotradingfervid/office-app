@@ -6,20 +6,27 @@ user-invocable: false
 
 # Office App proof playbook
 
-One command does the capture: `scripts/prove.sh <id>` (run inside the story worktree). It writes
-`factory/evidence/<id>/report.md` with `code-commit`, and fills it with:
+**Commit the story's code first**; both scripts refuse uncommitted changes. Then, inside the story worktree:
 
-1. `make check` result (must be PASS).
-2. The story's ` ```check ` commands (shell lines in the Check section), each with exit code and output tail.
-3. Screen stories only: the story's ` ```journey ` block run by `scripts/journey.py` on this branch (`after/`)
-   and on `origin/main`/`main` (`before/`), at **390 px and 1280 px, light theme**, each run on a fresh
-   seeded database. Before the wireframes exist, judge structure and the check only (no styling review).
-4. `scripts/mutate.sh <id>` — gremlins on changed lines. `LIVED` fails; `NOT COVERED` is listed for information
-   (usually `if err != nil` returns). Install once: `go install github.com/go-gremlins/gremlins/cmd/gremlins@v0.6.0`.
+```
+scripts/prove.sh <id>                                  # capture: writes factory/evidence/<id>/report.md
+scripts/prove.sh <id> --verdict PASS "one-line reason"  # after reading it (or GAP "what is missing")
+```
 
-The report starts with `verdict: PENDING`. /prove reads it, looks at every screenshot in `after/`, then
-replaces that line with `verdict: PASS` or `verdict: GAP` and adds a `## Verdict` section: the check verbatim,
-PASS/GAP, and one line per piece of evidence. Raw logs stay in `raw/` (git-ignored); commit `report.md` and `after/`.
+The capture runs, in order: `make check`; the story's ` ```check ` commands (each must exit 0); for screen
+stories only, the ` ```journey ` block via `scripts/journey.py` on this branch (`after/`) and on `main`
+(`before/`) at **390 px and 1280 px, light theme**, each on a fresh seeded database; and `scripts/mutate.sh`
+(gremlins on committed changed lines — `LIVED` fails, `NOT COVERED` is information). It already runs mutation:
+do not run `scripts/mutate.sh` again separately (the /prove skill's step 3 is satisfied by this).
+Install gremlins once: `go install github.com/go-gremlins/gremlins/cmd/gremlins@v0.6.0`.
+
+The report is evidence: never edit it with Edit/Write (a hook blocks `factory/evidence/*`). The only change
+after capture is `--verdict`, which refuses a stale report. `code-commit` is the last commit touching anything
+except `factory/evidence/` and `factory/stories/`; wherever the core skills compare `code-commit`
+(/prove step 4, /ship steps 1 and 7), use `git log -1 --format=%H -- . ':!factory/evidence' ':!factory/stories'`,
+so the story-status commit does not make the evidence look stale.
+Look at every screenshot in `after/` before the verdict. Commit `report.md` and `after/` together with the
+story's `status: review`; raw logs stay in `raw/` (git-ignored). Before wireframes exist, judge structure and the check only.
 
 ## Writing the Check section of a story
 

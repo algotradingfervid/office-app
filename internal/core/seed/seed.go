@@ -20,7 +20,7 @@ type seeder struct {
 
 const storeKey = "seed.seeders"
 
-// Add registers a module's seeder on app. Call it from the module's Register.
+// Add registers a module's seeder on app. Call it from a feature file's addPart.
 func Add(app core.App, name string, fn Func) {
 	list, _ := app.Store().Get(storeKey).([]seeder)
 	app.Store().Set(storeKey, append(list, seeder{name, fn}))

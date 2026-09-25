@@ -31,7 +31,7 @@ Never edit `internal/modules/modules.go` or a module's root `Register` function 
 - Handlers parse input, call **one** service function, render. They never `Save` records.
 - Services own the rules and the transaction. Signature style: `func Submit(app core.App, c clock.Clock, in SubmitInput) (Result, error)`; inside, `app.RunInTransaction(func(txApp core.App) error { ... })` and **every** read and write in it uses `txApp`.
 - Data access is PocketBase's API (`FindFirstRecordByData`, `FindRecordsByFilter` with `dbx.Params`, `Save`). No raw SQL strings built from input.
-- Time comes from a `clock.Clock` argument (`clock.System{}` in handlers, `clock.Fixed(...)` in tests). Dates are `YYYY-MM-DD` strings; compare them as strings or parse with `time.ParseInLocation(time.DateOnly, s, clock.IST)`.
+- Anything that depends on "today" takes a `clock.Clock` argument (`clock.System{}` in handlers, `clock.Fixed(...)` in tests); pure date functions take dates, not a clock. Dates are `YYYY-MM-DD` strings; compare them as strings or parse with `time.ParseInLocation(time.DateOnly, s, clock.IST)`.
 
 ## How a feature registers itself (the pattern every file copies)
 

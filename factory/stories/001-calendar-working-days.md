@@ -24,7 +24,8 @@ pr:
 ## What
 The shared calendar module gets its data and the one question every form asks: is this date a working day?
 - Collections `holidays` (date text `YYYY-MM-DD` unique, name) and `settings` (key unique, value JSON), API rules `nil` (design spec `docs/superpowers/specs/2026-09-25-office-app-leave-design.md` §5.2).
-- Default setting `weekly_off`: Sundays plus the 2nd and 4th Saturday of each month.
+- Setting `weekly_off`, written by the migration (so real databases have it, not only demo data), value:
+  `{"Sunday":[1,2,3,4,5],"Saturday":[2,4]}` — each weekday maps to the weeks of the month (1 = days 1–7, 2 = 8–14, …) that are off.
 - Exported from the root package (this is the contract): `IsWorkingDay(app core.App, date string) (bool, error)` and
   `WorkingDays(app core.App, from, to string) ([]string, error)` (working dates in the inclusive range, in order).
 - Demo seed: the national holidays of leave year 2026-27 (Republic Day 2027-01-26, Independence Day 2026-08-15, Gandhi Jayanti 2026-10-02) plus Diwali 2026-11-09.
@@ -33,7 +34,9 @@ The shared calendar module gets its data and the one question every form asks: i
 ```check
 go test -count=1 ./internal/core/calendar/
 ```
-Table-driven tests with fixed dates: 2026-10-10 (2nd Sat) off, 2026-10-17 (3rd Sat) working, 2026-10-24 (4th Sat) off, 2026-10-31 (5th Sat) working, 2026-10-11 (Sun) off, 2026-10-02 (holiday) off, 2026-10-12 working; `WorkingDays` over 2026-10-09..2026-10-13 returns 09, 12, 13.
+Table-driven tests with fixed dates: 2026-10-10 (2nd Sat) off, 2026-10-17 (3rd Sat) working, 2026-10-24 (4th Sat) off, 2026-10-31 (5th Sat) working, 2026-10-11 (Sun) off, 2026-10-02 (holiday) off, 2026-10-12 working;
+week boundaries: 2026-11-07 (1st Sat) working, 2026-11-14 (2nd Sat) off, 2026-11-28 (4th Sat) off; `WorkingDays` over 2026-10-09..2026-10-13 returns 09, 12, 13.
+Errors: a malformed date or a missing `weekly_off` setting returns an error; `from > to` returns an empty list.
 
 ## Out of scope
 HR screens for holidays or settings (Usable). Half days and leave counting (story 004).

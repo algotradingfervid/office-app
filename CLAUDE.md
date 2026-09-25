@@ -73,9 +73,13 @@ Folders
   `internal/forms/*` one folder per form · `internal/testapp` test app · `docs/` design and HR policy.
 
 Conventions
-- Migrations: `<module>/<unix-time>_<what>.go` with `m.Register(up, nil)`; take the current Unix time.
+- A story's `files` claim is exact (test files `*_test.go` in the same folders are always allowed); a migration name given there wins.
+- New migrations: `<module>/<unix-time>_<what>.go` with `m.Register(up, nil)`; unnamed ones take the current Unix time.
 - New feature files register themselves: `func init() { addPart(func(app core.App) { ... }) }`.
-- Tests use `testapp.New(t)` / `testapp.Factory` and `clock.Fixed`, never `time.Now()` or a hand-built app.
+- Tests use `testapp.New(t)` / `testapp.Factory` (never a hand-built app); code that needs "today" takes a `clock.Clock` (tests: `clock.Fixed`).
+- Building a story from a session that is not in its worktree (e.g. a delegated agent): start every Bash
+  command with `cd <abs worktree> &&`, use absolute paths inside it, and run `make check` yourself before stopping.
+- Go needs no install step in a new worktree (shared module cache).
 
 Gotchas
 - Every read inside `RunInTransaction` uses `txApp`; the outer `app` deadlocks or reads stale data.
