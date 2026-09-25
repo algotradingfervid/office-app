@@ -4,13 +4,13 @@ title: A request can be submitted to a first approver and forwarded
 tier: core
 lane: full
 kind: feature
-status: backlog
+status: building
 needs: ["002"]
 files: ["internal/core/approvals/service_submit.go"]
 screen: none: no UI
 check: "Submitting creates a pending request with a submitted step for the chosen approver; the current approver can forward it to another active approver, at most 5 times"
-agent: 
-started: 
+agent: claude-bg-006
+started: 2026-09-25 10:21
 built: 
 proved: 
 reviewed: 

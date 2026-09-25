@@ -4,13 +4,13 @@ title: A leave request's days are counted like the policy says
 tier: core
 lane: full
 kind: feature
-status: backlog
+status: building
 needs: ["001", "003"]
 files: ["internal/forms/leave/daycount.go"]
 screen: none: no UI
 check: "Days are counted per the design: weekly offs and holidays skipped, half-day sessions count 0.5, maternity counts calendar days, and a request starting or ending on a non-working day is refused"
-agent: 
-started: 
+agent: claude-bg-004
+started: 2026-09-25 10:21
 built: 
 proved: 
 reviewed: 

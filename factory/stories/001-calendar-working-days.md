@@ -4,7 +4,7 @@ title: The calendar knows weekly offs and holidays
 tier: core
 lane: core
 kind: contract
-status: review
+status: merged
 needs: []
 files: ["internal/core/calendar/1790310100_calendar.go", "internal/core/calendar/workdays.go", "internal/core/calendar/seed.go"]
 screen: none: no UI
@@ -14,7 +14,7 @@ started: 2026-09-25 09:56
 built: 2026-09-25 09:58
 proved: 2026-09-25 09:59
 reviewed: 
-merged: 
+merged: 2026-09-25 10:21
 review-rounds: 0
 pr: 
 ---

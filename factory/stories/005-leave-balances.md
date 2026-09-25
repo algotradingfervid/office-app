@@ -4,13 +4,13 @@ title: Balances and available days come from the ledger
 tier: core
 lane: full
 kind: feature
-status: backlog
+status: building
 needs: ["003"]
 files: ["internal/forms/leave/balance.go", "internal/forms/leave/seed_balances.go"]
 screen: none: no UI
 check: "An employee's balance is the sum of their ledger entries for a type and leave year, and available is that minus days held by pending requests"
-agent: 
-started: 
+agent: claude-bg-005
+started: 2026-09-25 10:21
 built: 
 proved: 
 reviewed: 

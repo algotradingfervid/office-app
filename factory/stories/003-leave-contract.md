@@ -4,7 +4,7 @@ title: Leave types, rules, requests and the ledger exist
 tier: core
 lane: full
 kind: contract
-status: review
+status: merged
 needs: []
 files: ["internal/forms/leave/1790310300_leave.go", "internal/forms/leave/rules.go", "internal/forms/leave/seed_rules.go", "internal/forms/leave/ledger_guard.go"]
 screen: none: no UI
@@ -14,7 +14,7 @@ started: 2026-09-25 09:56
 built: 2026-09-25 10:01
 proved: 2026-09-25 10:09
 reviewed: 
-merged: 
+merged: 2026-09-25 10:21
 review-rounds: 0
 pr: 
 ---
