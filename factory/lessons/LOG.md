@@ -8,3 +8,4 @@
 | 2026-09-25 | tool-up trial (001) | stop-check.sh writes /tmp/shipshow-check.log, shared by parallel worktrees | core race | pending upstream (use mktemp) |
 | 2026-09-25 | tool-up trial (001) | isolate handoff assumes a human opens `claude -w`; no guidance for delegated agents; new-story.sh has no Go branch | core gap | product CLAUDE.md: `cd <worktree> &&` rule, Go needs no install; upstream |
 | 2026-09-25 | tool-up | /tool-up left .claude/station and STATE `tool-up: pending` while the trial ran | station hygiene | remove marker before the trial; set STATE at the end |
+| 2026-09-25 | tool-up trial 2 (001) | core /prove step 4 code-commit formula differs from product-proof's; guard-worktree is inactive for delegated agents and Bash-written files skip Edit/Write hooks | core gap | product: Write/Edit-only rule for delegated agents; upstream: path-based worktree guard, single code-commit formula |

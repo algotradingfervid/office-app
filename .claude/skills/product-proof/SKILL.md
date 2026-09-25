@@ -21,7 +21,7 @@ do not run `scripts/mutate.sh` again separately (the /prove skill's step 3 is sa
 Install gremlins once: `go install github.com/go-gremlins/gremlins/cmd/gremlins@v0.6.0`.
 
 The report is evidence: never edit it with Edit/Write (a hook blocks `factory/evidence/*`). The only change
-after capture is `--verdict`, which refuses a stale report. `code-commit` is the last commit touching anything
+after capture is `--verdict`, which refuses a stale report and also sets the story's `status` (PASS → `review` + `proved`, GAP → `building`). `code-commit` is the last commit touching anything
 except `factory/evidence/` and `factory/stories/`; wherever the core skills compare `code-commit`
 (/prove step 4, /ship steps 1 and 7), use `git log -1 --format=%H -- . ':!factory/evidence' ':!factory/stories'`,
 so the story-status commit does not make the evidence look stale.
@@ -66,5 +66,4 @@ Never write a per-story script: extend `scripts/journey.py` with a new step verb
   old step (login, home) means the story broke something upstream of it — investigate.
 - Screenshots: the page shows what the check says, nothing is cut off at 390 px, no raw error text.
 - Any `LIVED` mutant in new logic → GAP: add the test that kills it, re-run `scripts/prove.sh`.
-- After any code change the evidence is stale: rerun `scripts/prove.sh <id>`; never edit the report by hand
-  except the verdict line and section.
+- After any code change the evidence is stale: rerun `scripts/prove.sh <id>`; never edit the report by hand.

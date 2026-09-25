@@ -78,7 +78,8 @@ Conventions
 - New feature files register themselves: `func init() { addPart(func(app core.App) { ... }) }`.
 - Tests use `testapp.New(t)` / `testapp.Factory` (never a hand-built app); code that needs "today" takes a `clock.Clock` (tests: `clock.Fixed`).
 - Building a story from a session that is not in its worktree (e.g. a delegated agent): start every Bash
-  command with `cd <abs worktree> &&`, use absolute paths inside it, and run `make check` yourself before stopping.
+  command with `cd <abs worktree> &&`, write files only with Write/Edit at absolute worktree paths (not shell
+  heredocs: hooks and the formatter only see Write/Edit), and run `make check` yourself before stopping.
 - Go needs no install step in a new worktree (shared module cache).
 
 Gotchas

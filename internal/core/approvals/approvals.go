@@ -8,7 +8,7 @@ import "github.com/pocketbase/pocketbase/core"
 // registration list: a file that adds routes, hooks or seed data calls addPart in its init().
 var parts []func(app core.App)
 
-func addPart(p func(app core.App)) { parts = append(parts, p) } //nolint:unused // called by feature files as they are built
+func addPart(p func(app core.App)) { parts = append(parts, p) }
 
 // Register runs every part of the module (in file-name order, as Go runs init functions).
 func Register(app core.App) {

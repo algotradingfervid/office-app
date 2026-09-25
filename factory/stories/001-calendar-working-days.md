@@ -39,7 +39,7 @@ week boundaries: 2026-11-07 (1st Sat) working, 2026-11-14 (2nd Sat) off, 2026-11
 Errors: a malformed date or a missing `weekly_off` setting returns an error; `from > to` returns an empty list.
 
 ## Out of scope
-HR screens for holidays or settings (Usable). Half days and leave counting (story 004).
+HR screens for holidays or settings and auditing their changes (Usable). Half days and leave counting (story 004).
 
 ## Constraints
 Dates are strings, never PocketBase `date` fields. Register the seeder with `seed.Add` via `addPart`.

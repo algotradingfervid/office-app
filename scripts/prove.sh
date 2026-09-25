@@ -22,7 +22,15 @@ if [ "${2:-}" = "--verdict" ]; then
   grep -q "^code-commit: $now" "$ev/report.md" || { echo "report is stale (code changed since capture); rerun scripts/prove.sh $id" >&2; exit 2; }
   sed -i.bak "s/^verdict: .*/verdict: $v/" "$ev/report.md" && rm -f "$ev/report.md.bak"
   printf '\n## Verdict\n\ncheck: %s\nverdict: %s — %s\n' "$(sed -n 's/^check: //p' "$ev/report.md" | head -n1)" "$v" "$why" >>"$ev/report.md"
-  echo "verdict: $v"; exit 0
+  if [ "$v" = PASS ]; then
+    sed -i.bak -e "s/^status:.*/status: review/" -e "s/^proved:.*/proved: $(date '+%Y-%m-%d %H:%M')/" "$story"
+    next="commit report.md, after/ and $story, then /ship $id"
+  else
+    sed -i.bak "s/^status:.*/status: building/" "$story"
+    next="fix the gaps in /build $id, commit, then rerun scripts/prove.sh $id"
+  fi
+  rm -f "$story.bak"
+  echo "verdict: $v · story status updated · next: $next"; exit 0
 fi
 if [ -n "$(git status --porcelain -- . ':!factory/evidence' ':!factory/stories')" ]; then
   echo "prove: uncommitted changes; commit the story's code first (evidence is pinned to a commit)" >&2; exit 2

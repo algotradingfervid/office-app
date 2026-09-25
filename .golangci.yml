@@ -4,6 +4,11 @@ linters:
   enable:
     - misspell
     - bodyclose
+  exclusions:
+    rules:
+      # a module's addPart seam is unused until its first feature file lands
+      - linters: [unused]
+        text: "func addPart is unused"
 formatters:
   enable:
     - gofmt
