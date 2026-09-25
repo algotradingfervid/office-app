@@ -42,10 +42,12 @@ func LimitChecks(app core.App, lr *core.Record) ([]string, error) {
 		return nil, err
 	}
 
-	// The employee's other requests of this type, in every leave year, that hold or have used days.
+	// The employee's other requests of this type, in every leave year, that hold or have used days, in date
+	// order (on one date "first_half" and "full" sort before "second_half", which starts later).
 	others, err := app.FindRecordsByFilter("leave_requests",
 		"request.requester = {:emp} && request != {:req} && leave_type = {:type} && "+
-			"(request.status = {:pending} || request.status = {:approved} || request.status = {:cancelReq})", "", 0, 0,
+			"(request.status = {:pending} || request.status = {:approved} || request.status = {:cancelReq})",
+		"from_date,from_session", 0, 0,
 		dbx.Params{"emp": employee, "req": req.Id, "type": lt.Id, "pending": string(approvals.Pending),
 			"approved": string(approvals.Approved), "cancelReq": string(approvals.CancelRequested)})
 	if err != nil {
@@ -118,48 +120,53 @@ func LimitChecks(app core.App, lr *core.Record) ([]string, error) {
 }
 
 // adjacentDays adds up the days of the requests in others that join lr's run of leave, directly or through
-// each other. The run only grows outwards, so no request is counted twice.
+// each other. others is in date order, so one walk each way from lr meets the nearest request first.
 func adjacentDays(app core.App, lr *core.Record, others []*core.Record) (float64, error) {
 	first, last, sum := lr, lr, 0.0
-	for grown := true; grown; {
-		grown = false
-		for _, o := range others {
-			before, err := joins(app, o, first)
-			if err != nil {
-				return 0, err
-			}
-			after, err := joins(app, last, o)
-			if err != nil {
-				return 0, err
-			}
-			switch {
-			case before:
-				first = o
-			case after:
-				last = o
-			default:
-				continue
-			}
+	for i := len(others) - 1; i >= 0; i-- {
+		ok, err := joins(app, others[i], first)
+		if err != nil {
+			return 0, err
+		}
+		if ok {
+			sum += others[i].GetFloat("days")
+			first = others[i]
+		}
+	}
+	for _, o := range others {
+		ok, err := joins(app, last, o)
+		if err != nil {
+			return 0, err
+		}
+		if ok {
 			sum += o.GetFloat("days")
-			grown = true
+			last = o
 		}
 	}
 	return sum, nil
 }
 
-// joins reports whether leave b starts right after leave a: only non-working days between them and no
-// worked half day (a ending at the first half, or b starting at the second half).
+// joins reports whether leave b starts right after leave a ends, with no working half day between them:
+// the morning and afternoon of one date, or a full-day end and start with only non-working days between.
 func joins(app core.App, a, b *core.Record) (bool, error) {
-	end, start := a.GetString("to_date"), b.GetString("from_date")
-	if end >= start || a.GetString("to_session") == "first_half" || b.GetString("from_session") == "second_half" {
+	_, end := halfDays(a)
+	start, _ := halfDays(b)
+	if end >= start {
 		return false, nil
 	}
-	working, err := calendar.WorkingDays(app, end, start)
+	endDate, startDate := end[:10], start[:10]
+	if endDate == startDate {
+		return true, nil
+	}
+	if end[10] == '1' || start[10] == '2' {
+		return false, nil
+	}
+	working, err := calendar.WorkingDays(app, endDate, startDate)
 	if err != nil {
 		return false, err
 	}
 	for _, d := range working {
-		if d > end && d < start {
+		if d > endDate && d < startDate {
 			return false, nil
 		}
 	}
