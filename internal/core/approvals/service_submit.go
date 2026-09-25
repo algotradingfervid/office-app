@@ -69,7 +69,7 @@ func SubmitRequest(app core.App, c clock.Clock, in SubmitInput) (*core.Record, e
 		if err != nil {
 			return err
 		}
-		return addStep(txApp, req, 1, in.Requester, StepSubmitted, in.Approver, "", warnings)
+		return addStep(txApp, req, in.Requester, StepSubmitted, in.Approver, "", warnings)
 	})
 	if err != nil {
 		return nil, err
@@ -88,16 +88,9 @@ type ForwardInput struct {
 // ForwardRequest makes To the current approver of a pending request and records the forwarded step.
 func ForwardRequest(app core.App, in ForwardInput) error {
 	return app.RunInTransaction(func(txApp core.App) error {
-		req, err := txApp.FindRecordById("requests", in.Request)
+		req, err := requestForCurrentApprover(txApp, in.Request, in.Actor, "forward")
 		if err != nil {
 			return err
-		}
-		actor, err := txApp.FindRecordById("users", in.Actor)
-		if err != nil {
-			return err
-		}
-		if req.GetString("current_approver") != actor.Id || !actor.GetBool("active") {
-			return &UserError{"Only the current approver can forward this request."}
 		}
 		to, err := next(Status(req.GetString("status")), Forward)
 		if err != nil {
@@ -113,17 +106,13 @@ func ForwardRequest(app core.App, in ForwardInput) error {
 		if forwards >= maxForwards {
 			return &UserError{fmt.Sprintf("This request has already been forwarded %d times.", maxForwards)}
 		}
-		steps, err := txApp.CountRecords("approval_steps", dbx.HashExp{"request": req.Id})
-		if err != nil {
-			return err
-		}
 
 		req.Set("status", string(to))
 		req.Set("current_approver", in.To)
 		if err := txApp.Save(req); err != nil {
 			return err
 		}
-		return addStep(txApp, req, int(steps)+1, in.Actor, StepForwarded, in.To, in.Comment, nil)
+		return addStep(txApp, req, in.Actor, StepForwarded, in.To, in.Comment, nil)
 	})
 }
 
@@ -158,14 +147,36 @@ func checkApprover(txApp core.App, id, requester, actor string) error {
 	return nil
 }
 
-func addStep(txApp core.App, req *core.Record, seq int, actor string, action StepAction, toUser, comment string, warnings []string) error {
+// requestForCurrentApprover reads a request and refuses it unless actor is its active current approver;
+// verb names the refused action in the message.
+func requestForCurrentApprover(txApp core.App, requestID, actorID, verb string) (*core.Record, error) {
+	req, err := txApp.FindRecordById("requests", requestID)
+	if err != nil {
+		return nil, err
+	}
+	actor, err := txApp.FindRecordById("users", actorID)
+	if err != nil {
+		return nil, err
+	}
+	if req.GetString("current_approver") != actor.Id || !actor.GetBool("active") {
+		return nil, &UserError{"Only the current approver can " + verb + " this request."}
+	}
+	return req, nil
+}
+
+// addStep records the request's next approval step, numbered after the ones it already has.
+func addStep(txApp core.App, req *core.Record, actor string, action StepAction, toUser, comment string, warnings []string) error {
+	seq, err := txApp.CountRecords("approval_steps", dbx.HashExp{"request": req.Id})
+	if err != nil {
+		return err
+	}
 	steps, err := txApp.FindCollectionByNameOrId("approval_steps")
 	if err != nil {
 		return err
 	}
 	s := core.NewRecord(steps)
 	s.Set("request", req.Id)
-	s.Set("seq", seq)
+	s.Set("seq", seq+1)
 	s.Set("actor", actor)
 	s.Set("action", string(action))
 	s.Set("to_user", toUser)
