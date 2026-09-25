@@ -4,13 +4,13 @@ title: I can see my requests and their status
 tier: core
 lane: full
 kind: feature
-status: ready
+status: building
 needs: ["006"]
 files: ["internal/core/approvals/my_requests_page.go", "internal/core/approvals/templates/my_requests.html"]
 screen: my requests (/requests)
 check: "A signed-in employee sees a list of only their own requests with form summary, dates submitted and status, newest first"
-agent: 
-started: 
+agent: claude-bg-011
+started: 2026-09-25 10:50
 built: 
 proved: 
 reviewed: 

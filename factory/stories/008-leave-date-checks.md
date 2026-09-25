@@ -4,13 +4,13 @@ title: Leave dates are checked before submit
 tier: core
 lane: full
 kind: feature
-status: ready
+status: building
 needs: ["002", "003", "021"]
 files: ["internal/forms/leave/policy_dates.go"]
 screen: none: no UI
 check: "A leave request is refused when its type is inactive or barred in probation, it crosses 31 March, it overlaps the employee's own leave, or it is backdated too far; short notice is only a warning"
-agent: 
-started: 
+agent: claude-bg-008
+started: 2026-09-25 10:50
 built: 
 proved: 
 reviewed: 

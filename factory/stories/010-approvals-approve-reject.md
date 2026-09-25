@@ -4,13 +4,13 @@ title: An approver can approve as final or reject
 tier: core
 lane: full
 kind: feature
-status: ready
+status: building
 needs: ["006"]
 files: ["internal/core/approvals/service_decide.go", "internal/core/approvals/service_submit.go"]
 screen: none: no UI
 check: "The current approver can approve as final, which re-runs the form's checks and calls its approval hook exactly once, or reject with a required comment"
-agent: 
-started: 
+agent: claude-bg-010
+started: 2026-09-25 10:50
 built: 
 proved: 
 reviewed: 
