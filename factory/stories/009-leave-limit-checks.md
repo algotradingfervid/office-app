@@ -4,13 +4,13 @@ title: Leave limits and balance are checked before submit
 tier: core
 lane: full
 kind: feature
-status: building
+status: ready
 needs: ["002", "004", "005", "021", "022"]
 files: ["internal/forms/leave/policy_limits.go"]
 screen: none: no UI
 check: "A leave request is refused when it exceeds the consecutive-day limit (adjacent requests included), the available balance, the yearly cap, or the once-per-employment limit, or lacks a required attachment; LOP while paid leave remains is a warning"
-agent: claude-bg-009
-started: 2026-09-25 12:22
+agent: 
+started: 
 built: 
 proved: 
 reviewed: 
