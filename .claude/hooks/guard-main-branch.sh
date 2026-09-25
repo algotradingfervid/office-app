@@ -3,7 +3,7 @@
 # Office stations write their name to .claude/station while they run (see CLAUDE.md).
 set -euo pipefail
 input="$(cat)"
-cmd="$(printf '%s' "$input" | sed -n 's/.*"command"[[:space:]]*:[[:space:]]*"\(.*\)".*/\1/p' | head -n1)"
+cmd="$(printf '%s' "$input" | python3 -c 'import json,sys; print((json.load(sys.stdin).get("tool_input") or {}).get("command",""))' 2>/dev/null || true)"
 [ -z "$cmd" ] && exit 0
 
 case "$cmd" in
@@ -11,7 +11,7 @@ case "$cmd" in
     # The command may run elsewhere than the session: `cd <dir> && ...` or `git -C <dir> ...`.
     dir="$(printf '%s' "$cmd" | sed -n 's/^[[:space:]]*cd[[:space:]][[:space:]]*\([^;&|]*[^;&| ]\)[[:space:]]*&&.*/\1/p' | head -n1)"
     [ -z "$dir" ] && dir="$(printf '%s' "$cmd" | sed -n 's/.*git[[:space:]][[:space:]]*-C[[:space:]][[:space:]]*\([^[:space:]]*\).*/\1/p' | head -n1)"
-    dir="$(printf '%s' "$dir" | tr -d "\\\\\"'")"
+    dir="$(printf '%s' "$dir" | tr -d "\"'")"
     branch="$(git -C "${dir:-.}" branch --show-current 2>/dev/null || git branch --show-current 2>/dev/null || true)"
     if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
       case "$(cat .claude/station 2>/dev/null || true)" in
