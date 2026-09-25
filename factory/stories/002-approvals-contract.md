@@ -4,7 +4,7 @@ title: Requests, approval steps and the status table exist
 tier: core
 lane: full
 kind: contract
-status: proving
+status: review
 needs: []
 files: ["internal/core/approvals/1790310200_requests.go", "internal/core/approvals/transitions.go", "internal/core/approvals/forms.go", "internal/core/approvals/history_guard.go"]
 screen: none: no UI
@@ -12,7 +12,7 @@ check: "A request's status can only move along the design's transition table, an
 agent: claude-bg-002
 started: 2026-09-25 09:56
 built: 2026-09-25 09:59
-proved: 
+proved: 2026-09-25 10:00
 reviewed: 
 merged: 
 review-rounds: 0
