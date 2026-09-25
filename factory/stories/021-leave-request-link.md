@@ -4,7 +4,7 @@ title: Leave requests are linked to their approval request
 tier: core
 lane: core
 kind: contract
-status: proving
+status: review
 needs: ["002", "003"]
 files: ["internal/forms/leave/1790310400_leave_request_link.go"]
 screen: none: no UI
@@ -12,7 +12,7 @@ check: "Every leave request belongs to exactly one approval request, and a leave
 agent: claude-bg-021
 started: 2026-09-25 10:21
 built: 2026-09-25 10:24
-proved: 
+proved: 2026-09-25 10:24
 reviewed: 
 merged: 
 review-rounds: 0
