@@ -188,8 +188,9 @@ MRL: per_event, max 3, max_times_per_employment 1. LOP: no quota, yearly_cap 15,
 
 **Day count.** `count_mode = working_days`: every date in range that is not a weekly off or holiday counts
 1, except that `second_half` on from_date and `first_half` on to_date count 0.5. `calendar_days`
-(maternity): every date counts. A request whose first or last date is a non-working day is rejected
-(start and end on working days), and a half-day session on a non-working day is rejected.
+(maternity): every date counts, including Sundays and holidays, and the request may start or end on any
+date. For `working_days` only, a request whose first or last date is a non-working day is rejected (start and
+end on working days). In both modes a half-day session on a non-working day is rejected.
 
 **Checks on submit** (errors unless marked *warning*):
 

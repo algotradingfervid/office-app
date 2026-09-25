@@ -39,3 +39,4 @@ Cancellations, reassign (Usable). Pages.
 ## Constraints
 Every read inside the transaction uses `txApp`.
 Before calling `Next`, check the actor against the transition table's "who" (current approver / requester / HR admin, active) inside the transaction; one test per role that fails if the check is removed.
+Name the services `ApproveFinalRequest` and `RejectRequest` (006 uses `SubmitRequest`/`ForwardRequest`; `Submit` etc. are Action constants) and reuse 006's unexported helpers in service_submit.go without editing that file.

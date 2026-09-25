@@ -28,6 +28,7 @@ stories: scripts/ready.sh prints counts, waves and hotspots
 - (nothing)
 
 ## Open decisions
+- Rule-editing story (Usable): make quota-type listing leave-year-bound (005 review note)
 - Repo is PUBLIC (github.com/algotradingfervid/office-app): never commit secrets, real employee data or .env
 - Launch tier must ensure no demo users (public password) exist in production; `officeapp seed` is for dev/previews only
 - Design spec §12 open items (domain, machine arch, R2, e-mail coverage, go-live date)
