@@ -1,0 +1,54 @@
+[
+  {
+    "width": 390,
+    "step": "login E002",
+    "ok": true
+  },
+  {
+    "width": 390,
+    "step": "goto /approvals",
+    "ok": true
+  },
+  {
+    "width": 390,
+    "step": "see Pending my approval",
+    "ok": true
+  },
+  {
+    "width": 390,
+    "step": "see Nothing is waiting for you.",
+    "ok": true
+  },
+  {
+    "width": 390,
+    "step": "shot inbox",
+    "ok": true,
+    "file": "inbox-390.png"
+  },
+  {
+    "width": 1280,
+    "step": "login E002",
+    "ok": true
+  },
+  {
+    "width": 1280,
+    "step": "goto /approvals",
+    "ok": true
+  },
+  {
+    "width": 1280,
+    "step": "see Pending my approval",
+    "ok": true
+  },
+  {
+    "width": 1280,
+    "step": "see Nothing is waiting for you.",
+    "ok": true
+  },
+  {
+    "width": 1280,
+    "step": "shot inbox",
+    "ok": true,
+    "file": "inbox-1280.png"
+  }
+]

@@ -1,0 +1,26 @@
+{{define "title"}}Pending my approval{{end}}
+{{define "content"}}
+<h1>Pending my approval</h1>
+{{if .Data}}
+<div class="overflow-auto">
+  <table>
+    <thead>
+      <tr><th scope="col">Request</th><th scope="col">From</th><th scope="col">Submitted</th><th scope="col">Waiting</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      {{range .Data}}
+      <tr>
+        <td><a href="/requests/{{.ID}}">{{.Summary}}</a></td>
+        <td>{{.Requester}}</td>
+        <td>{{.Submitted}}</td>
+        <td>{{.Waiting}}</td>
+        <td>{{.Status}}</td>
+      </tr>
+      {{end}}
+    </tbody>
+  </table>
+</div>
+{{else}}
+<p>Nothing is waiting for you.</p>
+{{end}}
+{{end}}

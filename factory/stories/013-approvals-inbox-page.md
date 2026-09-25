@@ -4,15 +4,15 @@ title: Approvers see what is waiting for them
 tier: core
 lane: full
 kind: feature
-status: building
+status: review
 needs: ["010"]
 files: ["internal/core/approvals/inbox_page.go", "internal/core/approvals/templates/inbox.html"]
 screen: pending my approval (/approvals)
 check: "An approver sees only requests where they are the current approver, with requester, summary and waiting time; a non-approver is refused"
 agent: claude-bg-013
 started: 2026-09-25 15:42
-built: 
-proved: 
+built: 2026-09-25 15:44
+proved: 2026-09-25 15:46
 reviewed: 
 merged: 
 review-rounds: 0
@@ -25,6 +25,13 @@ pr:
 `GET /approvals` for users with `can_approve`: pending and cancel_requested requests whose current approver is me, oldest first, with requester name, summary, submitted date and days waiting, each linking to `/requests/{id}`.
 
 ## Check
+```journey
+login E002
+goto /approvals
+see Pending my approval
+see Nothing is waiting for you.
+shot inbox
+```
 ```check
 go test -count=1 -run 'Inbox' ./internal/core/approvals/
 ```
