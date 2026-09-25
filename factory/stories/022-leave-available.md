@@ -4,7 +4,7 @@ title: Available days subtract leave that is still pending
 tier: core
 lane: full
 kind: feature
-status: proving
+status: review
 needs: ["005", "021"]
 files: ["internal/forms/leave/balance_available.go"]
 screen: none: no UI
@@ -12,7 +12,7 @@ check: "Available days are the balance minus days of that type and leave year in
 agent: claude-bg-022
 started: 2026-09-25 10:50
 built: 2026-09-25 10:59
-proved: 
+proved: 2026-09-25 11:06
 reviewed: 
 merged: 
 review-rounds: 0
