@@ -30,6 +30,10 @@ func TestDays(t *testing.T) {
 		{"maternity calendar days", "calendar_days", "2026-10-01", "full", "2026-10-31", "full", 31},
 		{"calendar days across a year", "calendar_days", "2026-12-31", "full", "2027-01-01", "full", 2},
 		{"calendar days half", "calendar_days", "2026-10-09", "second_half", "2026-10-12", "full", 3.5},
+		{"calendar days ending with a first half", "calendar_days", "2026-10-12", "full", "2026-10-14", "first_half", 2.5},
+		{"maternity 182 days ending on a Sunday", "calendar_days", "2026-04-06", "full", "2026-10-04", "full", 182},
+		{"calendar days starting on a Sunday", "calendar_days", "2026-10-11", "full", "2026-10-31", "full", 21},
+		{"calendar days ending on a holiday", "calendar_days", "2026-09-28", "full", "2026-10-02", "full", 5},
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
@@ -59,10 +63,16 @@ func TestDaysRefused(t *testing.T) {
 			"Leave must start and end on a working day."},
 		{"half day on a holiday", "working_days", "2026-10-02", "first_half", "2026-10-02", "first_half",
 			"Leave must start and end on a working day."},
-		{"calendar days starting on a Sunday", "calendar_days", "2026-10-11", "full", "2026-10-31", "full",
-			"Leave must start and end on a working day."},
-		{"calendar days ending on a holiday", "calendar_days", "2026-09-01", "full", "2026-10-02", "full",
-			"Leave must start and end on a working day."},
+		{"calendar days half day on a holiday", "calendar_days", "2026-10-02", "first_half", "2026-10-02", "first_half",
+			"A half day must be on a working day."},
+		{"calendar days starting with a half Sunday", "calendar_days", "2026-10-11", "second_half", "2026-10-20", "full",
+			"A half day must be on a working day."},
+		{"calendar days ending with a half holiday", "calendar_days", "2026-09-28", "full", "2026-10-02", "first_half",
+			"A half day must be on a working day."},
+		{"unknown from session", "working_days", "2026-10-12", "morning", "2026-10-13", "full",
+			"Choose a session: full day, first half or second half."},
+		{"unknown to session", "working_days", "2026-10-12", "full", "2026-10-13", "",
+			"Choose a session: full day, first half or second half."},
 		{"to before from", "working_days", "2026-10-13", "full", "2026-10-12", "full",
 			"The leave cannot end before it starts."},
 		{"one day, two sessions", "working_days", "2026-10-12", "first_half", "2026-10-12", "second_half",
@@ -83,5 +93,14 @@ func TestDaysRefused(t *testing.T) {
 				t.Errorf("message = %q, want %q", userErr.Message, c.message)
 			}
 		})
+	}
+}
+
+func TestDaysUnknownCountMode(t *testing.T) {
+	app := testapp.New(t)
+	_, err := leave.Days(app, "hours", "2026-10-12", "full", "2026-10-13", "full")
+	var userErr *approvals.UserError
+	if err == nil || errors.As(err, &userErr) {
+		t.Fatalf("err = %v, want an internal error", err)
 	}
 }
