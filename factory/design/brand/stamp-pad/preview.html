@@ -1,0 +1,210 @@
+<!-- Direction "Stamp-pad" answers all of DIRECTION.md ## Brand: feel (playful, startup, rhythmic via ruled ledger lines and evenly punched holes), retrobrutalist-analog look (paper, ink outlines, hard shadows), one loud accent (stamp-pad blue), an "approved" stamp symbol, Archivo + Courier Prime. brand: quick, so it is the only direction. -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Placet brand: Stamp-pad</title>
+<link rel="icon" href="mark.svg" type="image/svg+xml">
+<style>
+@font-face { font-family: "Archivo"; src: url(../fonts/archivo-latin.woff2) format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+@font-face { font-family: "Courier Prime"; src: url(../fonts/courier-prime-400-latin.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Courier Prime"; src: url(../fonts/courier-prime-700-latin.woff2) format("woff2"); font-weight: 700; font-display: swap; }
+
+:root {
+  --paper: #F4EEDF; --carbon: #1B1914; --ink: #17150F; --manila: #E7C35A;
+  --blue: #2340C8; --blue-lit: #93A8FF;
+  --ground: var(--paper); --text: var(--ink); --line: var(--ink); --muted: #5B5547;
+  --accent: var(--blue); --on-accent: var(--paper); --rule: rgba(35, 64, 200, .16);
+  --success: #1E6B35; --warning: #8A4B00; --danger: #B8231B;
+  --card: #FBF7EC; --shadow: 4px 4px 0 var(--line);
+  --display: "Archivo", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --typed: "Courier Prime", "Courier New", Courier, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground: var(--carbon); --text: var(--paper); --line: var(--paper); --muted: #B3AB98;
+  --accent: var(--blue-lit); --on-accent: var(--ink); --rule: rgba(147, 168, 255, .14);
+  --success: #7FCB8F; --warning: #F0B24A; --danger: #FF8A7A; --card: #24211B; color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --ground: var(--carbon); --text: var(--paper); --line: var(--paper); --muted: #B3AB98;
+  --accent: var(--blue-lit); --on-accent: var(--ink); --rule: rgba(147, 168, 255, .14);
+  --success: #7FCB8F; --warning: #F0B24A; --danger: #FF8A7A; --card: #24211B; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--ground); color: var(--text); font: 400 16px/1.5 var(--body);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 31px, var(--rule) 31px 32px);
+}
+main { max-width: 1040px; margin: 0 auto; padding: 32px 16px 64px; }
+h1, h2, h3 { font-family: var(--display); font-stretch: 112%; font-weight: 800; line-height: 1.05; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: 25px; text-transform: uppercase; margin: 56px 0 16px; display: flex; gap: 12px; align-items: baseline; }
+h2 .no { font: 700 14px var(--typed); color: var(--accent); letter-spacing: .06em; }
+.typed { font-family: var(--typed); }
+.label { font: 700 14px/1.4 var(--typed); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+p { margin: 0 0 8px; }
+
+/* Brutalist card: ink outline, hard shadow, square corners */
+.card { background: var(--card); border: 3px solid var(--line); box-shadow: var(--shadow); padding: 20px; }
+.grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+/* Masthead */
+.mast { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; padding: 24px; }
+.mast .mark { width: 112px; height: 112px; }
+.mast .word { height: 56px; width: auto; max-width: 100%; }
+.mast .tag { flex-basis: 100%; font: 700 20px var(--typed); }
+.theme-only-dark { display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .theme-only-light { display: none; } :root:not([data-theme="light"]) .theme-only-dark { display: inline; } }
+:root[data-theme="dark"] .theme-only-light { display: none; }
+:root[data-theme="dark"] .theme-only-dark { display: inline; }
+
+/* Mark sheet: always shows both grounds, whatever the page theme */
+.sheet { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 24px; }
+.ground { border: 3px solid var(--ink); box-shadow: var(--shadow); padding: 20px; display: flex; gap: 12px; align-items: end; justify-content: space-around; }
+.ground.carbon { border-color: var(--line); }
+.ground .big { width: min(160px, 32vw); height: auto; }
+.ground.paper { background: var(--paper); color: var(--ink); }
+.ground.carbon { background: var(--carbon); color: var(--paper); }
+.ground figure { margin: 0; display: grid; justify-items: center; gap: 6px; }
+.ground figcaption { font: 700 14px var(--typed); }
+.ground.paper figcaption { color: var(--ink); } .ground.carbon figcaption { color: var(--paper); }
+.ground .mono-ink { color: var(--ink); } .ground .mono-blue { color: var(--blue); } .ground .mono-paper { color: var(--paper); }
+.ground img { display: block; }
+.mono { display: block; width: var(--s); height: var(--s); background: currentColor; -webkit-mask: url(mark-mono.svg) center / contain no-repeat; mask: url(mark-mono.svg) center / contain no-repeat; }
+
+/* Swatches */
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+.sw { border: 3px solid var(--line); box-shadow: var(--shadow); background: var(--card); }
+.sw .chip { height: 72px; border-bottom: 3px solid var(--line); display: flex; align-items: center; padding: 0 12px; font: 800 25px var(--display); font-stretch: 112%; }
+.sw div + div { padding: 10px 12px; }
+.sw b { display: block; font-family: var(--display); font-stretch: 112%; }
+.sw .typed { font-size: 14px; }
+
+/* Type */
+.specimen .big { font-family: var(--display); font-stretch: 112%; font-weight: 800; font-size: 39px; line-height: 1.05; text-transform: uppercase; }
+.specimen .num { font: 700 49px/1 var(--typed); }
+
+/* UI pieces for the voice strings */
+.btn { display: inline-block; font: 700 16px var(--body); padding: 10px 18px; border: 3px solid var(--line); box-shadow: var(--shadow); background: var(--card); color: var(--text); }
+.btn.primary { background: var(--accent); color: var(--on-accent); }
+.btn.danger { background: var(--danger); color: var(--ground); }
+.row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.balance { display: flex; align-items: baseline; gap: 10px; margin: 8px 0; }
+.balance .typed { font-size: 49px; font-weight: 700; line-height: 1; }
+.voice { align-items: start; margin-top: 24px; }
+.voice .label { margin-bottom: 8px; }
+.msg { border-left-width: 12px; }
+.msg.error { border-left-color: var(--danger); }
+.msg.ok { border-left-color: var(--accent); }
+.status { display: inline-block; border: 2px solid var(--ink); font: 700 14px var(--typed); text-transform: uppercase; padding: 1px 8px; letter-spacing: .06em; }
+.status.pending { background: var(--manila); color: var(--ink); }
+.status.approved { background: var(--success); color: var(--ground); }
+.status.rejected { background: var(--danger); color: var(--ground); }
+</style>
+</head>
+<body>
+<main>
+  <section class="card mast" aria-label="Placet">
+    <img class="mark theme-only-light" src="mark.svg" alt="Placet mark">
+    <img class="mark theme-only-dark" src="mark-dark.svg" alt="Placet mark">
+    <img class="word theme-only-light" src="wordmark.svg" alt="Placet">
+    <img class="word theme-only-dark" src="wordmark-dark.svg" alt="Placet">
+    <p class="tag">Every yes, on record.</p>
+  </section>
+
+  <h2><span class="no">01</span>The mark</h2>
+  <p>A postage stamp, struck at an angle, with a tick: a request that went through. The ruled lines behind every page keep the beat, like a ledger.</p>
+  <div class="sheet">
+    <div class="ground paper">
+      <figure><img class="big" src="mark.svg" width="160" height="160" alt="Mark, full colour, 160px"><figcaption>160</figcaption></figure>
+      <figure><img src="mark.svg" width="48" height="48" alt="Mark, 48px"><figcaption>48</figcaption></figure>
+      <figure><img src="mark.svg" width="32" height="32" alt="Mark, 32px"><figcaption>32</figcaption></figure>
+      <figure><img src="mark.svg" width="16" height="16" alt="Mark, 16px"><figcaption>16</figcaption></figure>
+    </div>
+    <div class="ground carbon">
+      <figure><img class="big" src="mark-dark.svg" width="160" height="160" alt="Mark on dark, 160px"><figcaption>160</figcaption></figure>
+      <figure><img src="mark-dark.svg" width="48" height="48" alt="Mark on dark, 48px"><figcaption>48</figcaption></figure>
+      <figure><img src="mark-dark.svg" width="32" height="32" alt="Mark on dark, 32px"><figcaption>32</figcaption></figure>
+      <figure><img src="mark-dark.svg" width="16" height="16" alt="Mark on dark, 16px"><figcaption>16</figcaption></figure>
+    </div>
+    <div class="ground paper" aria-label="Single colour on paper">
+      <figure class="mono-ink"><span class="mono" style="--s:96px" role="img" aria-label="Single-colour mark, 96px"></span><figcaption>ink</figcaption></figure>
+      <figure class="mono-blue"><span class="mono" style="--s:96px" role="img" aria-label="Single-colour mark, 96px"></span><figcaption>blue</figcaption></figure>
+      <figure class="mono-ink"><span class="mono" style="--s:16px" role="img" aria-label="Single-colour mark, 16px"></span><figcaption>16</figcaption></figure>
+    </div>
+    <div class="ground carbon" aria-label="Single colour on carbon">
+      <figure class="mono-paper"><span class="mono" style="--s:96px" role="img" aria-label="Single-colour mark, 96px"></span><figcaption>paper</figcaption></figure>
+      <figure class="mono-paper"><span class="mono" style="--s:16px" role="img" aria-label="Single-colour mark, 16px"></span><figcaption>16</figcaption></figure>
+    </div>
+  </div>
+
+  <h2><span class="no">02</span>Palette</h2>
+  <p>Paper, ink and one blue. Manila and the status colours only turn up on chips and messages.</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#2340C8;color:#F4EEDF">Aa</div><div><b>Stamp-pad blue</b><span class="typed">#2340C8<br>text contrast 6.87:1</span></div></div>
+    <div class="sw"><div class="chip" style="background:#93A8FF;color:#17150F">Aa</div><div><b>Blue, lit</b><span class="typed">#93A8FF<br>blue for dark mode, 7.77:1</span></div></div>
+    <div class="sw"><div class="chip" style="background:#F4EEDF;color:#17150F">Aa</div><div><b>Paper</b><span class="typed">#F4EEDF</span></div></div>
+    <div class="sw"><div class="chip" style="background:#1B1914;color:#F4EEDF">Aa</div><div><b>Carbon</b><span class="typed">#1B1914</span></div></div>
+    <div class="sw"><div class="chip" style="background:#17150F;color:#F4EEDF">Aa</div><div><b>Ink</b><span class="typed">#17150F<br>text contrast 15.8:1</span></div></div>
+    <div class="sw"><div class="chip" style="background:#E7C35A;color:#17150F">Aa</div><div><b>Manila</b><span class="typed">#E7C35A<br>backgrounds only</span></div></div>
+    <div class="sw"><div class="chip" style="background:var(--success);color:var(--ground)">Aa</div><div><b>Ledger green</b><span class="typed">#1E6B35 light<br>#7FCB8F dark</span></div></div>
+    <div class="sw"><div class="chip" style="background:var(--warning);color:var(--ground)">Aa</div><div><b>Ochre</b><span class="typed">#8A4B00 light<br>#F0B24A dark</span></div></div>
+    <div class="sw"><div class="chip" style="background:var(--danger);color:var(--ground)">Aa</div><div><b>Red-stamp</b><span class="typed">#B8231B light<br>#FF8A7A dark</span></div></div>
+  </div>
+
+  <p class="label" style="margin-top:24px">Status labels (not buttons: flat, no shadow)</p>
+  <p><span class="status pending">Pending</span> <span class="status approved">Approved</span> <span class="status rejected">Rejected</span></p>
+
+  <h2><span class="no">03</span>Type</h2>
+  <div class="grid specimen">
+    <div class="card">
+      <p class="label">Headings · Archivo, extra bold, wide</p>
+      <p class="big">Leave, approved.</p>
+      <p class="label" style="margin-top:16px">Sentences · Archivo, regular</p>
+      <p>Pick your dates and your first approver. Placet counts the working days, skips the holidays and shows what is left before you send it.</p>
+    </div>
+    <div class="card">
+      <p class="label">Numbers and codes · Courier Prime (typewriter)</p>
+      <p class="num">4 → 2</p>
+      <p>A balance going from 4 to 2 days, and a request reference as typed on screen:</p>
+      <p class="typed">REQ-0142 · 03 OCT 2026 · 2.0 DAYS CL</p>
+      <p class="label" style="margin-top:16px">Sizes, in pixels</p>
+      <p class="typed">49 · 39 · 31 · 25 · 20 · 16 · 14</p>
+    </div>
+  </div>
+
+  <h2><span class="no">04</span>Voice</h2>
+  <p>Brisk, warm, exact. Short sentences, exact numbers, people by name. (CL is casual leave, EL earned leave: the terms staff already use.)</p>
+  <div class="grid voice">
+    <div><p class="label">Welcome (home page)</p>
+      <div class="card">
+        <h3 style="font-size:25px">Morning, Asha.</h3>
+        <div class="balance"><span class="typed">4</span><span>days of CL in the bank.</span></div>
+        <div class="row"><span class="btn primary">Apply for leave</span></div>
+      </div></div>
+    <div><p class="label">Empty state</p>
+      <div class="card">
+        <h3 style="font-size:20px">Nothing waiting on you.</h3>
+        <p>Desk's clear.</p>
+      </div></div>
+    <div><p class="label">Error (form check)</p>
+      <div class="card msg error">
+        <p>CL runs 2 days max in a row. Shorten it, or switch to EL.</p>
+      </div></div>
+    <div><p class="label">Success toast (after approving)</p>
+      <div class="card msg ok">
+        <p>Stamped. 2 days of CL approved by Ravi.</p>
+      </div></div>
+    <div><p class="label">Destructive confirm</p>
+      <div class="card">
+        <h3 style="font-size:20px">Cancel this leave?</h3>
+        <p>2 days go back to your CL. The history keeps a note of it.</p>
+        <div class="row"><span class="btn danger">Cancel leave</span><span class="btn">Keep it</span></div>
+      </div></div>
+  </div>
+</main>
+</body>
+</html>

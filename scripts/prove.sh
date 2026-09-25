@@ -52,7 +52,7 @@ cat >"$ev/report.md" <<EOF
 
 story: $story
 code-commit: $code_commit
-base: $base ($(git rev-parse --short "$base"))
+base: $base (merge-base $(git merge-base "$base" HEAD | cut -c1-7); $base now $(git rev-parse --short "$base"))
 captured: $(date '+%Y-%m-%d %H:%M')
 check: $check_line
 verdict: PENDING   # set with: scripts/prove.sh $id --verdict PASS|GAP "reason"

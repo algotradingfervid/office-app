@@ -1,0 +1,42 @@
+{
+  "shots": [
+    {
+      "page": "factory/design/brand/stamp-pad/preview.html",
+      "width": 390,
+      "theme": "light",
+      "shot": "factory/design/brand/shots/factory__design__brand__stamp-pad__preview-390-light.png",
+      "console_errors": [],
+      "failed_assets": [],
+      "horizontal_scroll_px": 0
+    },
+    {
+      "page": "factory/design/brand/stamp-pad/preview.html",
+      "width": 390,
+      "theme": "dark",
+      "shot": "factory/design/brand/shots/factory__design__brand__stamp-pad__preview-390-dark.png",
+      "console_errors": [],
+      "failed_assets": [],
+      "horizontal_scroll_px": 0
+    },
+    {
+      "page": "factory/design/brand/stamp-pad/preview.html",
+      "width": 1280,
+      "theme": "light",
+      "shot": "factory/design/brand/shots/factory__design__brand__stamp-pad__preview-1280-light.png",
+      "console_errors": [],
+      "failed_assets": [],
+      "horizontal_scroll_px": 0
+    },
+    {
+      "page": "factory/design/brand/stamp-pad/preview.html",
+      "width": 1280,
+      "theme": "dark",
+      "shot": "factory/design/brand/shots/factory__design__brand__stamp-pad__preview-1280-dark.png",
+      "console_errors": [],
+      "failed_assets": [],
+      "horizontal_scroll_px": 0
+    }
+  ],
+  "missing_links": [],
+  "unreachable": []
+}

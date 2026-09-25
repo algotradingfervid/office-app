@@ -13,10 +13,10 @@ agent: claude-bg-001
 started: 2026-09-25 09:56
 built: 2026-09-25 09:58
 proved: 2026-09-25 09:59
-reviewed: 
+reviewed: 2026-09-25
 merged: 2026-09-25 10:21
-review-rounds: 0
-pr: 
+review-rounds: 1
+pr: https://github.com/algotradingfervid/office-app/pull/1
 ---
 
 # The calendar knows weekly offs and holidays

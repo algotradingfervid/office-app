@@ -69,8 +69,7 @@ Commands
 - Demo logins: E001 employee, E002 + E003 approvers, E004 HR admin; password `demo-pass-2026`.
 
 Folders
-- `cmd/officeapp` main · `internal/modules` the one module list · `internal/core/*` shared modules ·
-  `internal/forms/*` one folder per form · `internal/testapp` test app · `docs/` design and HR policy.
+- `cmd/officeapp` main · `internal/modules` module list · `internal/core/*` shared · `internal/forms/*` forms · `internal/testapp` · `docs/`.
 
 Conventions
 - A story's `files` claim is exact (test files `*_test.go` in the same folders are always allowed); a migration name given there wins.
@@ -80,7 +79,8 @@ Conventions
 - Building a story from a session that is not in its worktree (e.g. a delegated agent): start every Bash
   command with `cd <abs worktree> &&`, write files only with Write/Edit at absolute worktree paths (not shell
   heredocs: hooks and the formatter only see Write/Edit), and run `make check` yourself before stopping.
-- Go needs no install step in a new worktree (shared module cache).
+- Go needs no install step in a new worktree. /slice: a story that reads or links to a collection another
+  unmerged story creates must `need` it; if both must run in one wave, add a later link story (021, 022).
 
 Gotchas
 - Every read inside `RunInTransaction` uses `txApp`; the outer `app` deadlocks or reads stale data.

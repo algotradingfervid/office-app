@@ -66,4 +66,6 @@ Never write a per-story script: extend `scripts/journey.py` with a new step verb
   old step (login, home) means the story broke something upstream of it — investigate.
 - Screenshots: the page shows what the check says, nothing is cut off at 390 px, no raw error text.
 - Any `LIVED` mutant in new logic → GAP: add the test that kills it, re-run `scripts/prove.sh`.
+- `NOT COVERED` on `case` condition lines of a `switch` is a gremlins coverage quirk (Go coverage has no block for
+  case conditions): not a GAP when each case has a test asserting its exact result or message (story 004).
 - After any code change the evidence is stale: rerun `scripts/prove.sh <id>`; never edit the report by hand.

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Placet">
+  <title>Placet</title>
+  <defs><mask id="t"><rect width="64" height="64" fill="#fff"/><path d="M18.5 31 27 39.5 42.5 22" fill="none" stroke="#000" stroke-width="7" stroke-linecap="square" transform="translate(2 2)"/></mask></defs>
+  <g transform="rotate(-6 32 32)"><path d="M8 8H15.8A3.2 3.2 0 0 0 22.2 8H26.8A3.2 3.2 0 0 0 33.2 8H37.8A3.2 3.2 0 0 0 44.2 8H52V15.8A3.2 3.2 0 0 0 52 22.2V26.8A3.2 3.2 0 0 0 52 33.2V37.8A3.2 3.2 0 0 0 52 44.2V52H44.2A3.2 3.2 0 0 0 37.8 52H33.2A3.2 3.2 0 0 0 26.8 52H22.2A3.2 3.2 0 0 0 15.8 52H8V44.2A3.2 3.2 0 0 0 8 37.8V33.2A3.2 3.2 0 0 0 8 26.8V22.2A3.2 3.2 0 0 0 8 15.8Z" fill="currentColor" mask="url(#t)" transform="translate(2 2)"/></g>
+</svg>

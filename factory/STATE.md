@@ -20,7 +20,7 @@ wireframe: pending
 
 ## Line
 tier: core
-tier-e2e: pending
+tier-e2e: pending          # Core: 7 of 18 stories merged (wave 2 done 2026-09-25); last /learn 2026-09-25
 agents-recommended: 4      # owner wants small, fast parallel stories
 stories: scripts/ready.sh prints counts, waves and hotspots
 

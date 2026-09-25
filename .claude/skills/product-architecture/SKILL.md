@@ -85,6 +85,9 @@ var holidaysPages = web.NewPages(holidaysFS)
 
 ## Rules for tests
 
+- Each story puts its tests in its own new file named after its feature file (`daycount.go` → `daycount_test.go`).
+  Edit another story's test file only when your schema change breaks it, and say why in the commit (021).
+
 - Business rules: table-driven unit tests with explicit dates (e.g. `2026-10-10` is a 2nd Saturday → weekly off).
 - Anything touching records: `app := testapp.New(t)` — migrated, demo data seeded (E001–E004), own DB copy.
 - Pages: `tests.ApiScenario` with `TestAppFactory: testapp.Factory`, or a closure returning a prepared app.
