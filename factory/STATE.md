@@ -25,7 +25,9 @@ agents-recommended: 4      # owner wants small, fast parallel stories
 stories: scripts/ready.sh prints counts, waves and hotspots
 
 ## Waiting on the human
-- Decide: private GitHub repo (for /ship pull requests + off-site code copy) or local review/merge
+- (nothing)
 
 ## Open decisions
+- Repo is PUBLIC (github.com/algotradingfervid/office-app): never commit secrets, real employee data or .env
+- Launch tier must ensure no demo users (public password) exist in production; `officeapp seed` is for dev/previews only
 - Design spec §12 open items (domain, machine arch, R2, e-mail coverage, go-live date)
