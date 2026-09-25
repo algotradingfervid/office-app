@@ -1,0 +1,54 @@
+[
+  {
+    "width": 390,
+    "step": "login E001",
+    "ok": true
+  },
+  {
+    "width": 390,
+    "step": "goto /requests",
+    "ok": true
+  },
+  {
+    "width": 390,
+    "step": "see My requests",
+    "ok": true
+  },
+  {
+    "width": 390,
+    "step": "see You have not made any requests yet.",
+    "ok": true
+  },
+  {
+    "width": 390,
+    "step": "shot my-requests",
+    "ok": true,
+    "file": "my-requests-390.png"
+  },
+  {
+    "width": 1280,
+    "step": "login E001",
+    "ok": true
+  },
+  {
+    "width": 1280,
+    "step": "goto /requests",
+    "ok": true
+  },
+  {
+    "width": 1280,
+    "step": "see My requests",
+    "ok": true
+  },
+  {
+    "width": 1280,
+    "step": "see You have not made any requests yet.",
+    "ok": true
+  },
+  {
+    "width": 1280,
+    "step": "shot my-requests",
+    "ok": true,
+    "file": "my-requests-1280.png"
+  }
+]
