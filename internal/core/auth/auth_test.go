@@ -147,3 +147,59 @@ func TestHomeGreetsSignedInUser(t *testing.T) {
 	}
 	s.Test(t)
 }
+
+// The session cookie is Secure and lasts the token's 7 days, except on plain-HTTP previews on this machine.
+func TestSessionCookieFlags(t *testing.T) {
+	cases := []struct {
+		url    string
+		secure bool
+	}{
+		{"http://office.example.com/login", true},
+		{"http://127.0.0.1:8090/login", false},
+		{"http://localhost:8090/login", false},
+		{"http://localhost/login", false},
+	}
+	for _, c := range cases {
+		s := tests.ApiScenario{
+			Name:           c.url,
+			Method:         http.MethodPost,
+			URL:            c.url,
+			Body:           testapp.Form(map[string]string{"identity": "E001", "password": auth.DemoPassword}),
+			Headers:        testapp.FormHeaders(""),
+			ExpectedStatus: http.StatusSeeOther,
+			TestAppFactory: testapp.Factory,
+			AfterTestFunc: func(t testing.TB, _ *tests.TestApp, res *http.Response) {
+				cookie := findCookie(res, auth.CookieName)
+				if cookie == nil || cookie.Secure != c.secure || cookie.MaxAge != 7*24*60*60 {
+					t.Errorf("cookie = %+v, want Secure=%v MaxAge=604800", cookie, c.secure)
+				}
+			},
+		}
+		s.Test(t)
+	}
+}
+
+func TestLogoutClearsCookie(t *testing.T) {
+	s := tests.ApiScenario{
+		Method:         http.MethodPost,
+		URL:            "/logout",
+		Headers:        testapp.FormHeaders(""),
+		ExpectedStatus: http.StatusSeeOther,
+		TestAppFactory: testapp.Factory,
+		AfterTestFunc: func(t testing.TB, _ *tests.TestApp, res *http.Response) {
+			if c := findCookie(res, auth.CookieName); c == nil || c.MaxAge >= 0 || c.Value != "" {
+				t.Errorf("logout cookie = %+v, want an expired empty cookie", c)
+			}
+		},
+	}
+	s.Test(t)
+}
+
+func findCookie(res *http.Response, name string) *http.Cookie {
+	for _, c := range res.Cookies() {
+		if c.Name == name {
+			return c
+		}
+	}
+	return nil
+}

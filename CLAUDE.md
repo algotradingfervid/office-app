@@ -54,3 +54,35 @@ Size the ceremony to the risk. Prove the core before building around it, and bui
 Stories are small (one outcome, ≤ 5 non-test files) and planned in waves that own disjoint files.
 
 <!-- PRODUCT SECTION: /tool-up appends product-specific commands and conventions below this line. Keep it under 60 lines. -->
+
+## Product: Office App (Go 1.27.1 + PocketBase v0.40.4, htmx, Pico.css)
+
+Design (rules, data, security, ops): `docs/superpowers/specs/2026-09-25-office-app-leave-design.md`. Terms: `factory/GLOSSARY.md` (read it before naming anything).
+Load `product-architecture` before writing or reviewing Go code; `product-proof` in /prove.
+
+Commands
+- `make check` — gofmt, vet, golangci-lint, import boundaries, all tests. The gate for everything.
+- `go test ./internal/forms/leave/...` — one module's tests while building.
+- `make run` — dev server on 127.0.0.1:8090 with demo data in ./pb_data (delete the folder to reset).
+- `scripts/preview.sh` / `--stop` — this checkout on a free port with fresh demo data; prints the URL.
+- `scripts/prove.sh <id>`, `scripts/mutate.sh <id>` — evidence and mutation (gremlins v0.6.0).
+- Demo logins: E001 employee, E002 + E003 approvers, E004 HR admin; password `demo-pass-2026`.
+
+Folders
+- `cmd/officeapp` main · `internal/modules` the one module list · `internal/core/*` shared modules ·
+  `internal/forms/*` one folder per form · `internal/testapp` test app · `docs/` design and HR policy.
+
+Conventions
+- Migrations: `<module>/<unix-time>_<what>.go` with `m.Register(up, nil)`; take the current Unix time.
+- New feature files register themselves: `func init() { addPart(func(app core.App) { ... }) }`.
+- Tests use `testapp.New(t)` / `testapp.Factory` and `clock.Fixed`, never `time.Now()` or a hand-built app.
+
+Gotchas
+- Every read inside `RunInTransaction` uses `txApp`; the outer `app` deadlocks or reads stale data.
+- Calendar dates are text `YYYY-MM-DD`; PocketBase `date` fields are UTC datetimes (off by one in IST).
+- CSP forbids inline scripts/styles and `hx-on`; POST forms need `Sec-Fetch-Site` (tests: `testapp.FormHeaders`).
+
+Risk paths (a story touching these is `lane: full`)
+- `internal/core/auth/**` · `internal/core/approvals/**` · `internal/core/audit/**`
+- `internal/forms/*/*ledger*`, `*balance*`, `*daycount*`, `*policy*`, `*form_hooks*`, `*jobs*` · anything serving attachments
+- a migration that changes or drops an existing field/collection (new collections are fine) · `internal/core/web/web.go`
