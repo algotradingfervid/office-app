@@ -35,3 +35,4 @@ Actions (015), counts on home, filters.
 
 ## Constraints
 Embed only this page's template.
+Filter the inbox by status (pending, cancel_requested) as well as current approver: rejected requests keep `current_approver` (010 security review).
