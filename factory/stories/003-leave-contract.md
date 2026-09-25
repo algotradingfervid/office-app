@@ -4,15 +4,15 @@ title: Leave types, rules, requests and the ledger exist
 tier: core
 lane: full
 kind: contract
-status: building
+status: review
 needs: []
 files: ["internal/forms/leave/1790310300_leave.go", "internal/forms/leave/rules.go", "internal/forms/leave/seed_rules.go", "internal/forms/leave/ledger_guard.go"]
 screen: none: no UI
 check: "The leave collections exist with the design's fields, the default rules for all nine leave types are seeded, and a ledger entry can never be edited or deleted"
 agent: claude-bg-003
 started: 2026-09-25 09:56
-built: 
-proved: 
+built: 2026-09-25 10:01
+proved: 2026-09-25 10:09
 reviewed: 
 merged: 
 review-rounds: 0

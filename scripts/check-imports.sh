@@ -13,9 +13,9 @@ while read -r pkg imports; do
       officeapp/internal/core/*)
         case "$imp" in officeapp/internal/forms/*) echo "BOUNDARY: $pkg imports form $imp"; fail=1 ;; esac ;;
       officeapp/internal/forms/*)
-        form="$(echo "$pkg" | cut -d/ -f4)"
+        form="$(echo "$pkg" | cut -d/ -f4 | sed -E 's/(\.test|_test)$//')" # a form's test packages are the form
         case "$imp" in officeapp/internal/forms/*)
-          other="$(echo "$imp" | cut -d/ -f4)"
+          other="$(echo "$imp" | cut -d/ -f4 | sed -E 's/(\.test|_test)$//')"
           if [ "$form" != "$other" ]; then echo "BOUNDARY: form $form imports form $other ($imp)"; fail=1; fi ;;
         esac ;;
     esac
