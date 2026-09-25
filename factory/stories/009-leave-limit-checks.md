@@ -38,3 +38,4 @@ Date checks (008), UI.
 Days come from story 004's function; balance/available from 005.
 Rule fields use 0 two ways (see 003's migration comment): 0 = none/no limit for days_per_year, max_consecutive_days, yearly_cap, max_times_per_employment, attachment_after_days, min_notice_days; 0 = a real zero for max_backdate_days and carry_forward_cap. Ledger `days` cannot be 0 (PocketBase required number): never write a zero-day entry.
 `Balance` (005) returns 0 for an unknown type code: validate the leave type exists and is active before using balances.
+The LOP yearly cap sums approved + pending LOP days itself; `AvailableBalances` lists quota types only (022 review).
