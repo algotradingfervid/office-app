@@ -4,7 +4,7 @@ title: An approver can approve as final or reject
 tier: core
 lane: full
 kind: feature
-status: backlog
+status: ready
 needs: ["006"]
 files: ["internal/core/approvals/service_decide.go", "internal/core/approvals/service_submit.go"]
 screen: none: no UI

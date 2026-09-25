@@ -4,7 +4,7 @@ title: Leave requests are linked to their approval request
 tier: core
 lane: core
 kind: contract
-status: review
+status: merged
 needs: ["002", "003"]
 files: ["internal/forms/leave/1790310400_leave_request_link.go"]
 screen: none: no UI
@@ -14,7 +14,7 @@ started: 2026-09-25 10:21
 built: 2026-09-25 10:24
 proved: 2026-09-25 10:24
 reviewed: 
-merged: 
+merged: 2026-09-25 10:46
 review-rounds: 0
 pr: 
 ---

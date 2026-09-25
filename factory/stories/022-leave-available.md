@@ -4,7 +4,7 @@ title: Available days subtract leave that is still pending
 tier: core
 lane: full
 kind: feature
-status: backlog
+status: ready
 needs: ["005", "021"]
 files: ["internal/forms/leave/balance_available.go"]
 screen: none: no UI

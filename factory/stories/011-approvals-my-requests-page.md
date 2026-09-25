@@ -4,7 +4,7 @@ title: I can see my requests and their status
 tier: core
 lane: full
 kind: feature
-status: backlog
+status: ready
 needs: ["006"]
 files: ["internal/core/approvals/my_requests_page.go", "internal/core/approvals/templates/my_requests.html"]
 screen: my requests (/requests)

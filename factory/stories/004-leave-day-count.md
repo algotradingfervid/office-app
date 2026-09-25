@@ -4,7 +4,7 @@ title: A leave request's days are counted like the policy says
 tier: core
 lane: full
 kind: feature
-status: review
+status: merged
 needs: ["001", "003"]
 files: ["internal/forms/leave/daycount.go"]
 screen: none: no UI
@@ -14,7 +14,7 @@ started: 2026-09-25 10:21
 built: 2026-09-25 10:24
 proved: 2026-09-25 10:29
 reviewed: 
-merged: 
+merged: 2026-09-25 10:46
 review-rounds: 0
 pr: 
 ---

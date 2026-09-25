@@ -4,7 +4,7 @@ title: Leave dates are checked before submit
 tier: core
 lane: full
 kind: feature
-status: backlog
+status: ready
 needs: ["002", "003", "021"]
 files: ["internal/forms/leave/policy_dates.go"]
 screen: none: no UI

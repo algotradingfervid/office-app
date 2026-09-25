@@ -4,7 +4,7 @@ title: Balances come from the ledger
 tier: core
 lane: full
 kind: feature
-status: review
+status: merged
 needs: ["003"]
 files: ["internal/forms/leave/balance.go", "internal/forms/leave/seed_balances.go"]
 screen: none: no UI
@@ -14,7 +14,7 @@ started: 2026-09-25 10:21
 built: 2026-09-25 10:24
 proved: 2026-09-25 10:25
 reviewed: 
-merged: 
+merged: 2026-09-25 10:46
 review-rounds: 0
 pr: 
 ---
