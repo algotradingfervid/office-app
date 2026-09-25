@@ -1,0 +1,15 @@
+<article>
+  <header>Leave balances {{.Year}}</header>
+  <div class="overflow-auto">
+    <table>
+      <thead>
+        <tr><th scope="col">Leave type</th><th scope="col">Balance</th><th scope="col">Available</th></tr>
+      </thead>
+      <tbody>
+        {{range .Types}}
+        <tr><td>{{.Name}}</td><td>{{.Balance}}</td><td>{{.Available}}</td></tr>
+        {{end}}
+      </tbody>
+    </table>
+  </div>
+</article>

@@ -1,0 +1,44 @@
+[
+  {
+    "width": 390,
+    "step": "login E001",
+    "ok": true
+  },
+  {
+    "width": 390,
+    "step": "see Casual Leave",
+    "ok": true
+  },
+  {
+    "width": 390,
+    "step": "see 10.5",
+    "ok": true
+  },
+  {
+    "width": 390,
+    "step": "shot home-balances",
+    "ok": true,
+    "file": "home-balances-390.png"
+  },
+  {
+    "width": 1280,
+    "step": "login E001",
+    "ok": true
+  },
+  {
+    "width": 1280,
+    "step": "see Casual Leave",
+    "ok": true
+  },
+  {
+    "width": 1280,
+    "step": "see 10.5",
+    "ok": true
+  },
+  {
+    "width": 1280,
+    "step": "shot home-balances",
+    "ok": true,
+    "file": "home-balances-1280.png"
+  }
+]
