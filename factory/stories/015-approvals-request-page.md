@@ -57,3 +57,4 @@ Cancel buttons (Usable). Leave-specific detail beyond `Summary`.
 
 ## Constraints
 Embed only this page's template. Permission checks on the server for GET and every POST.
+An unknown or inaccessible request id returns 404 with a plain page, never a raw error; every POST re-checks the actor server-side (006 security review).

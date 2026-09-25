@@ -51,3 +51,4 @@ Attachments upload UI (Usable), styling beyond stock Pico.
 
 ## Constraints
 The preview runs the same Go checks as submit; no client-side rules. No inline JS; htmx attributes only.
+The requester is always the signed-in user (`e.Auth`), never a form field: include a test that a posted requester id is ignored (006 security review).

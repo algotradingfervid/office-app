@@ -6,7 +6,7 @@ lane: full
 kind: feature
 status: backlog
 needs: ["006"]
-files: ["internal/core/approvals/service_decide.go"]
+files: ["internal/core/approvals/service_decide.go", "internal/core/approvals/service_submit.go"]
 screen: none: no UI
 check: "The current approver can approve as final, which re-runs the form's checks and calls its approval hook exactly once, or reject with a required comment"
 agent: 
@@ -39,4 +39,4 @@ Cancellations, reassign (Usable). Pages.
 ## Constraints
 Every read inside the transaction uses `txApp`.
 Before calling `Next`, check the actor against the transition table's "who" (current approver / requester / HR admin, active) inside the transaction; one test per role that fails if the check is removed.
-Name the services `ApproveFinalRequest` and `RejectRequest` (006 uses `SubmitRequest`/`ForwardRequest`; `Submit` etc. are Action constants) and reuse 006's unexported helpers in service_submit.go without editing that file.
+Name the services `ApproveFinalRequest` and `RejectRequest` (006 uses `SubmitRequest`/`ForwardRequest`; `Submit` etc. are Action constants) and reuse 006's helpers: move step-seq counting into `addStep` and extract the "is the active current approver" check into a helper used by forward, approve and reject (006 review).
