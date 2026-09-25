@@ -4,7 +4,7 @@ title: Leave dates are checked before submit
 tier: core
 lane: full
 kind: feature
-status: review
+status: merged
 needs: ["002", "003", "021"]
 files: ["internal/forms/leave/policy_dates.go"]
 screen: none: no UI
@@ -14,7 +14,7 @@ started: 2026-09-25 10:50
 built: 2026-09-25 11:03
 proved: 2026-09-25 11:11
 reviewed: 
-merged: 
+merged: 2026-09-25 12:19
 review-rounds: 0
 pr: 
 ---

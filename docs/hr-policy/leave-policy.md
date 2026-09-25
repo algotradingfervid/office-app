@@ -158,7 +158,8 @@ So the policy can change without code changes, each leave type has these admin-e
   6/12 of the annual quota). CL and EL are credited in advance on the 1st of each month to employees who
   have joined on or before that date, so a mid-month joiner's first credit is on the next 1st.
 - **During probation** (first 6 months `[setting]`): CL and SL may be used; EL accrues but can be
-  used only after the probation end date recorded by HR `[setting]`.
+  used only for leave that starts on or after the confirmation date HR records as "probation end"
+  (the first day after probation). An employee may apply during probation for EL that falls after it.
 - **At exit:** HR deactivates the employee's account; pending applications are cancelled. Unused EL is
   encashed; CL and SL lapse. Leave taken in excess of the pro-rata entitlement is recovered from final
   settlement.

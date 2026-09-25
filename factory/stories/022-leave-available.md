@@ -4,7 +4,7 @@ title: Available days subtract leave that is still pending
 tier: core
 lane: full
 kind: feature
-status: review
+status: merged
 needs: ["005", "021"]
 files: ["internal/forms/leave/balance_available.go"]
 screen: none: no UI
@@ -14,7 +14,7 @@ started: 2026-09-25 10:50
 built: 2026-09-25 10:59
 proved: 2026-09-25 11:06
 reviewed: 
-merged: 
+merged: 2026-09-25 12:19
 review-rounds: 0
 pr: 
 ---

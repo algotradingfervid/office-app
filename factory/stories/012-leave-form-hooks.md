@@ -39,3 +39,4 @@ Pages. Year-close recompute on late changes (Usable).
 ## Constraints
 Hooks use only the `txApp` they receive.
 Test two submits of 1 CL each against 1 available: the second must be refused, because Validate reads `Available(txApp, ...)` and sees the first pending hold (022 review).
+At final approval run the date checks (008) with a clock fixed at the request's `submitted_at` (IST), so backdate and notice are measured from submission (spec §5.3, owner decision 1A); overlap and limits use current data.

@@ -194,7 +194,9 @@ end on working days). In both modes a half-day session on a non-working day is r
 
 **Checks on submit** (errors unless marked *warning*):
 
-1. Leave type active and allowed in probation (`today < probation_end` → probation).
+1. Leave type active and allowed in probation. Probation is judged by the **leave dates**: the request is
+   probation leave when `from_date < probation_end` (probation_end = the first day after probation, i.e. the
+   confirmation date; empty = no probation). Owner decision 2026-09-25 ("2A").
 2. Dates valid; **request must not cross the leave-year boundary** (31 Mar / 1 Apr) — the employee submits
    two requests. This keeps each request charged to exactly one year's balance.
 3. **No overlap** with the employee's own `pending`, `approved` or `cancel_requested` requests (any type,
@@ -213,7 +215,9 @@ end on working days). In both modes a half-day session on a non-working day is r
 
 **Final approval** re-runs all checks with today's data, **recomputes `days`** (a holiday may have been
 added), stores the recomputed value if it changed (shown to the approver before confirming), and debits
-that value.
+that value. Exception (owner decision 2026-09-25, "1A"): checks 4 (backdate) and 5 (notice) are measured from
+the request's **submission date**, not the approval date, so a late approval never turns a valid request
+into a refused one.
 
 ### 5.4 Balance rules
 

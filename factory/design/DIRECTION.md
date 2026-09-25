@@ -2,34 +2,60 @@
 
 ## Brand
 
-status: approved by owner 2026-09-25, verbatim: "yes, go ahead"
+status: round 2 approved by owner 2026-09-25 ("Yes, go ahead"; mark concept "Two blocks agree")
 
-- **Feel**: playful, startup-y, rhythmic (owner: "playful startup and rythmic").
-  Rhythmic read as: a steady repeating grid — ledger rules, stamped blocks at even
-  intervals, the beat of a form being filled in. (Owner confirmed these are the feel words.)
-- **Must not feel like**: open (not answered; working assumption: a grey government/e-governance portal).
-- **References**: retrobrutalism, and "make everything look analog". Translated as:
-  paper ground (warm off-white), ink-black 2–3px outlines, hard offset shadows with no blur,
-  flat fills, square-ish corners, visible ruled lines; objects from the paper office —
-  rubber stamps, carbon-copy forms, typewriter labels, hole-punched cards, ledger books.
-- **Colour appetite**: one loud accent + ink + paper (owner picked 4a). Semantic colours
-  (success/warning/danger) stay flat and few. Avoid: purple/violet (Qubitech's colour and an
-  AI default), gradients.
-- **Relation to company brands**: Fervid Smart (fervidsmart.com) uses burnt orange `#DA4F27`
-  on near-black; Qubitech (qubitech.io) uses violet `#6D28D9`/`#8B5CF6` with teal and amber.
-  Owner chose to stand apart: accent = **stamp-pad blue** (cobalt ink, like the blue office
-  stamps on Indian approval forms).
-- **Logo approach**: a simple SVG symbol that reads as "approved" (owner picked 5). Motif
-  candidates: a rubber-stamp impression, a tick inside a seal. Must work at 16px, one colour.
-  Stay away from: generic check-in-circle icons, clip art, text effects.
-- **Type** (owner delegated the call, 2026-09-25): analog reaches the numbers and labels.
-  - Display + body: **Archivo** (grotesque with heavy weights; Google Fonts, OFL) — chunky
-    headings, clean readable body.
-  - Numbers, dates, reference codes, labels: **Courier Prime** (a proper typewriter face;
-    Google Fonts, OFL) — the "typed on a form" feel.
-  - Fonts self-hosted (the CSP forbids third-party origins). English only.
-  - Avoided: Space Grotesk / Space Mono / Inter (AI defaults), pixel monos like Departure
-    Mono (reads digital-retro, not analog).
-- **Process**: brand dial is `quick` → one direction. After drawing, the independent
-  `reviewer-blind` agent reviews the preview, and its feedback is applied before the owner sees it.
-- **Open questions**: must-not-feel-like (working assumption above).
+- **Feel**: professional — calm, trustworthy, precise. Supersedes round 1's "playful, startup,
+  rhythmic". Owner, verbatim: "this design system is too playful no one in our team is approving, let us
+  stick to some professional theme instead of retrobrutalism. but let us have some subtle analog elements,
+  don't use any gradients".
+- **Must not feel like**: playful or retrobrutalist (round 1, "Stamp-pad", rejected); a grey
+  government/e-governance portal (working assumption).
+- **References**: a well-kept office register. Subtle analog touches only, chosen by owner:
+  - warm paper background (off-white page; cards in clean white on top);
+  - register hairlines (1px rules between rows and under headings; no background lines);
+  - typed reference numbers (request codes, dates, balances in a quiet mono).
+  Not chosen: a stamp on approved requests. No heavy outlines, no hard shadows, no tilt.
+- **Colour appetite**: one accent + neutrals. Semantic colours flat and muted. **No gradients anywhere**
+  (owner rule). Accent: **open, being re-chosen**. Deep ink blue `#1F3A8A` was tried and rejected, owner
+  verbatim: "can we use a different color palet, this looks same as everything I see, make sure of
+  contrasts and UX principles are followed when changing this". So: no navy/corporate blue; WCAG AA for
+  all text; status colours distinct from the accent and never the only signal.
+  Moodboard round (2026-09-25): green (A), petrol (B), graphite & marigold (C). Owner, verbatim: "green is
+  very bad, why don't we go with something like orange, also give me some more options". So: **orange
+  family**, no green accent. Fervid's orange overlap is now the owner's call (one option matches it).
+  **Picked (owner, 2026-09-25): option 1, burnt orange & graphite**, from `brand/moodboard-orange.html`.
+  Accent `#B4470E` (white on it 5.46:1; text on paper 4.89:1), dark mode `#F4925A`; mark second tone
+  `#F4925A` on light, `#B4470E` on dark. Status: approved green word, pending slate `#4F5B73`, rejected
+  berry `#A3213F`, each with a word and symbol.
+- **Relation to company brands**: Fervid Smart uses burnt orange `#DA4F27`; Qubitech uses violet
+  `#6D28D9`/`#8B5CF6`. Placet stands apart from both (no orange, no purple).
+- **Logo approach**: **professional, abstract, simple, geometric** (owner, replacing the round seal
+  with tick). Flat, one colour, crisp at 16px. No literal tick, stamp or seal; no clip art, no effects.
+  Concept (owner picked): **two blocks agree**: two squares, one decision. Made less icon-like after
+  review (equal outlined squares read as a "copy" icon); owner picked variant C: a large solid square
+  with a smaller outlined square on its corner, the outline cutting through the solid where they meet.
+  Where the outline crosses the solid it is filled with the other blue, not the ground (owner, option 1:
+  light blue `#9DB2F2` on light, deep blue `#1F3A8A` on dark). One-colour version keeps the cut.
+- **Character** (owner picked 2026-09-25 from 2026 trend research; sources: blog.tubikstudio.com/ui-design-trends-2026,
+  muz.li mobile patterns 2026, creativebloq 2026 trends): owner asked for "more character and doesn't look like
+  something generated by AI".
+  - **Own geometric icons**: a small custom set drawn in the mark's language (right angles, square caps,
+    one solid block per icon), not a stock pack.
+  - **Ledger numerals + visible grid**: balances as large mono numerals; numbered section labels; hairline
+    grid structure (Swiss / register look).
+  - **Purposeful motion**: short state-change motion only (e.g. an approved request settling into the
+    register); none when the device asks for reduced motion.
+  - **Mobile first** (owner: "design this keeping mobile first design system in mind"): design at phone width
+    first and scale up; touch targets at least 44px; icons drawn on a 24px grid; the phone screen is the
+    main exhibit of the brand preview.
+  - Not chosen: thumb-zone bottom bar / bottom sheets, signature-chain timeline, fluid type. Avoid:
+    glass/blur, 3D, neumorphism (and gradients, owner rule).
+- **Type**: **IBM Plex Sans** (headings and body) + **IBM Plex Mono** (reference numbers, dates,
+  balances). OFL, self-hosted (the CSP allows no font origins but our own). Normal widths,
+  sentence-case headings. English only.
+- **Voice** (owner OK'd): polite, plain, exact. No jokes or slang ("in the bank",
+  "Desk's clear" go); short sentences and exact numbers stay.
+- **Process**: brand dial `quick` → one direction; `reviewer-blind` reviews it and its feedback is
+  applied before the owner sees it.
+- **History**: round 1 "Stamp-pad" (retrobrutalist, tilted perforated stamp, Archivo + Courier Prime)
+  stays in `factory/design/brand/stamp-pad/` as the rejected direction.

@@ -1,0 +1,82 @@
+<!-- Moodboard for DIRECTION.md ## Brand, palette re-choice after "deep ink blue" was rejected ("looks same as everything I see"). Three accents, same layout, same mark and type; every text colour checked for WCAG AA. Sketches to react to, not directions. -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Placet palettes</title>
+<style>
+@font-face{font-family:"IBM Plex Sans";src:url(fonts/ibm-plex-sans-latin.woff2) format("woff2");font-weight:100 700}
+@font-face{font-family:"IBM Plex Mono";src:url(fonts/ibm-plex-mono-400-latin.woff2) format("woff2");font-weight:400}
+:root{color-scheme:light;--pg:#EEECE7;--pt:#1E2024}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--pg:#0C0D0F;--pt:#E9E6DF}}
+:root[data-theme="dark"]{color-scheme:dark;--pg:#0C0D0F;--pt:#E9E6DF}
+*{box-sizing:border-box}body{margin:0;background:var(--pg);color:var(--pt);font:16px/1.5 "IBM Plex Sans",Arial,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:32px 16px 64px}h1{font-size:28px;font-weight:600;margin:0 0 8px}h2{font-size:23px;font-weight:600;margin:48px 0 4px}
+.why{margin:0 0 4px}.note{margin:0 0 16px;opacity:.85;font-size:14px}
+.pair{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.scr{background:var(--ground);color:var(--text);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.mode{margin:0 0 8px;font-size:14px;color:var(--muted)}
+.bar{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--rule);font-size:19px}
+.bal{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:12px;margin:12px 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.lab{flex-basis:100%;font-size:14px;color:var(--muted)}.num{font:400 33px/1.1 "IBM Plex Mono",monospace}
+.hl{background:var(--chip,var(--support));color:#1E2024;font-size:14px;padding:1px 8px;border-radius:3px}
+.mono{font-family:"IBM Plex Mono",monospace}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--rule);border-radius:4px;font-size:14px}
+th{text-align:left;color:var(--muted);font-weight:500;padding:8px 10px;border-bottom:1px solid var(--text)}
+td{padding:8px 10px;border-bottom:1px solid var(--rule)}tr.sel td{background:var(--tint)}
+.st{font-weight:500}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+.err{border-left:4px solid var(--bad);background:var(--card);padding:8px 12px;margin:12px 0;font-size:14px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-block;padding:8px 14px;border-radius:4px;border:1px solid var(--rule);background:var(--card);font-weight:500}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on)}
+.btn.focus{outline:3px solid var(--support);outline-offset:2px}
+</style></head><body><main>
+<h1>Pick a palette for Placet</h1>
+<p>Same mark, type and layout; only the colours change. The "Cancel" button shows the keyboard focus ring. Every text colour passes WCAG AA (4.5:1) on its ground; statuses carry a word and a symbol as well as a colour.</p>
+<h2>A · Ledger green & brass</h2><p class="why">Bottle-green ledger bindings and brass fittings of an old office register. Green is the colour of "yes"; brass is a quiet warm second note.</p><p class="note">Approved uses the brand green itself (the product is about yes); pending is amber, rejected is brick. Each status also has its word and an icon shape, so colour is never the only signal.</p><div class="pair"><div class="scr" style="--ground:#F5F2EA;--card:#FFFFFF;--text:#1B211E;--muted:#58605B;--rule:#DDD7C8;--accent:#1E4D3B;--on:#FFFFFF;--support:#9A7430;--chip:#E2C98F;--tint:#E6EFE9;--ok:#1E4D3B;--warn:#8A5A00;--bad:#A8321F;--m1:#1E4D3B;--m2:#9A7430"><p class="mode">Light</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#1E4D3B" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#9A7430" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span><span class="hl">2 days pending</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div><div class="scr" style="--ground:#111613;--card:#19201C;--text:#E8E6DF;--muted:#A3AAA5;--rule:#2C3530;--accent:#8CCBAE;--on:#111613;--support:#D9B36A;--tint:#1F3329;--ok:#8CCBAE;--warn:#E5B25A;--bad:#F08A78;--m1:#8CCBAE;--m2:#D9B36A"><p class="mode">Dark</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#8CCBAE" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#D9B36A" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span><span class="hl">2 days pending</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div></div>
+<h2>B · Petrol & sand</h2><p class="why">Deep petrol ink (blue-green, like old fountain-pen ink) on sand-coloured paper. Calm and technical without being navy.</p><p class="note">Accent (petrol) and approved (green) are different hues, so buttons never look like statuses.</p><div class="pair"><div class="scr" style="--ground:#F4F1EA;--card:#FFFFFF;--text:#1A2224;--muted:#566064;--rule:#DCD6C9;--accent:#0E5763;--on:#FFFFFF;--support:#8C7443;--chip:#DCC79A;--tint:#E3EEF0;--ok:#2E6B34;--warn:#8A5A00;--bad:#A8321F;--m1:#0E5763;--m2:#8C7443"><p class="mode">Light</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#0E5763" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#8C7443" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span><span class="hl">2 days pending</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div><div class="scr" style="--ground:#0F1517;--card:#172023;--text:#E7E5DE;--muted:#A0AAAD;--rule:#2A3437;--accent:#7FC4CF;--on:#0F1517;--support:#D4BC88;--tint:#18323A;--ok:#7FCB86;--warn:#E5B25A;--bad:#F08A78;--m1:#7FC4CF;--m2:#D4BC88"><p class="mode">Dark</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#7FC4CF" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#D4BC88" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span><span class="hl">2 days pending</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div></div>
+<h2>C · Graphite & marigold</h2><p class="why">Charcoal graphite for structure and buttons, with marigold (the colour of Indian celebration garlands) as the single warm highlight.</p><p class="note">Marigold is a fill only (ink text on it, 7.34:1), never text. Pending uses a brown-orange, not marigold, so a highlight never reads as a warning.</p><div class="pair"><div class="scr" style="--ground:#F5F3EE;--card:#FFFFFF;--text:#1E2024;--muted:#5A5D63;--rule:#DEDAD1;--accent:#23262B;--on:#FFFFFF;--support:#E3A21A;--tint:#FBF0D6;--ok:#2E6B34;--warn:#8A4B12;--bad:#A8321F;--m1:#23262B;--m2:#E3A21A"><p class="mode">Light</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#23262B" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#E3A21A" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span><span class="hl">2 days pending</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div><div class="scr" style="--ground:#131417;--card:#1C1D21;--text:#E9E6DF;--muted:#A6A8AD;--rule:#2F3136;--accent:#E9E6DF;--on:#131417;--support:#F0B840;--tint:#3A3120;--ok:#7FCB86;--warn:#F0A060;--bad:#F08A78;--m1:#E9E6DF;--m2:#F0B840"><p class="mode">Dark</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#E9E6DF" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#F0B840" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span><span class="hl">2 days pending</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div></div>
+</main></body></html>

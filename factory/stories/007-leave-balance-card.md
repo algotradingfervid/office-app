@@ -4,7 +4,7 @@ title: Home shows my leave balances
 tier: core
 lane: core
 kind: feature
-status: backlog
+status: ready
 needs: ["005", "022"]
 files: ["internal/forms/leave/home_card.go", "internal/forms/leave/templates/balance_card.html"]
 screen: home (/)

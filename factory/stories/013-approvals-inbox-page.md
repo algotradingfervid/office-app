@@ -4,7 +4,7 @@ title: Approvers see what is waiting for them
 tier: core
 lane: full
 kind: feature
-status: backlog
+status: ready
 needs: ["010"]
 files: ["internal/core/approvals/inbox_page.go", "internal/core/approvals/templates/inbox.html"]
 screen: pending my approval (/approvals)

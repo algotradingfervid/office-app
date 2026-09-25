@@ -4,7 +4,7 @@ title: An approver can approve as final or reject
 tier: core
 lane: full
 kind: feature
-status: review
+status: merged
 needs: ["006"]
 files: ["internal/core/approvals/service_decide.go", "internal/core/approvals/service_submit.go"]
 screen: none: no UI
@@ -14,7 +14,7 @@ started: 2026-09-25 10:50
 built: 2026-09-25 11:01
 proved: 2026-09-25 11:09
 reviewed: 
-merged: 
+merged: 2026-09-25 12:19
 review-rounds: 0
 pr: 
 ---

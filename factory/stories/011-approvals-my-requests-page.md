@@ -4,7 +4,7 @@ title: I can see my requests and their status
 tier: core
 lane: full
 kind: feature
-status: review
+status: merged
 needs: ["006"]
 files: ["internal/core/approvals/my_requests_page.go", "internal/core/approvals/templates/my_requests.html"]
 screen: my requests (/requests)
@@ -14,7 +14,7 @@ started: 2026-09-25 10:50
 built: 2026-09-25 11:04
 proved: 2026-09-25 11:12
 reviewed: 
-merged: 
+merged: 2026-09-25 12:19
 review-rounds: 0
 pr: 
 ---

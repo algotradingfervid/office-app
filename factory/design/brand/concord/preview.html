@@ -1,0 +1,217 @@
+<!-- Direction "Concord" answers DIRECTION.md ## Brand round 2: professional feel; subtle analog touches (warm paper, register hairlines, typed reference numbers); deep ink blue as the one accent; no gradients; abstract geometric mark "two blocks agree"; IBM Plex Sans + Mono; polite, plain, exact voice. brand: quick, so it is the only round-2 direction (round 1 "Stamp-pad" was rejected). -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Placet brand: Concord</title>
+<link rel="icon" href="mark.svg" type="image/svg+xml">
+<style>
+@font-face { font-family: "IBM Plex Sans"; src: url(../fonts/ibm-plex-sans-latin.woff2) format("woff2"); font-weight: 100 700; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url(../fonts/ibm-plex-mono-400-latin.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url(../fonts/ibm-plex-mono-500-latin.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+
+:root {
+  --paper: #F6F3EC; --night: #12151C;
+  --ground: var(--paper); --card: #FFFFFF; --text: #1C2230; --muted: #5B6272; --rule: #DCD5C6;
+  --accent: #1F3A8A; --on-accent: #FFFFFF; --tint: #E7ECF8;
+  --success: #1D6B45; --warning: #8A5A00; --danger: #A8321F;
+  --sans: "IBM Plex Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground: var(--night); --card: #1A1E27; --text: #E9E6DF; --muted: #A2A8B5; --rule: #2E3340;
+  --accent: #9DB2F2; --on-accent: #12151C; --tint: #1E2A4A;
+  --success: #6FCF9A; --warning: #E5B25A; --danger: #F08A78; color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --ground: var(--night); --card: #1A1E27; --text: #E9E6DF; --muted: #A2A8B5; --rule: #2E3340;
+  --accent: #9DB2F2; --on-accent: #12151C; --tint: #1E2A4A;
+  --success: #6FCF9A; --warning: #E5B25A; --danger: #F08A78; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ground); color: var(--text); font: 400 16px/1.5 var(--sans); }
+main { max-width: 1040px; margin: 0 auto; padding: 32px 16px 64px; }
+h1, h2, h3 { font-weight: 600; letter-spacing: -.01em; margin: 0; }
+h2 { font-size: 23px; line-height: 1.25; margin: 56px 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+h3 { font-size: 19px; line-height: 1.35; }
+p { margin: 0 0 8px; }
+.mono { font-family: var(--mono); }
+.label { font-size: 14px; font-weight: 500; color: var(--muted); margin-bottom: 8px; }
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 4px; padding: 20px; }
+.grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); align-items: start; }
+.intro { color: var(--muted); margin-bottom: 20px; }
+
+/* Masthead */
+.mast { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 20px; padding: 28px; }
+.mast .mk { width: 72px; height: 72px; }
+.mast .wm { height: 48px; width: auto; }
+.mast .tag { flex-basis: 100%; color: var(--muted); font-size: 19px; margin: 0; }
+.dark-only { display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .light-only { display: none; } :root:not([data-theme="light"]) .dark-only { display: block; } }
+:root[data-theme="dark"] .light-only { display: none; }
+:root[data-theme="dark"] .dark-only { display: block; }
+
+/* Mark sheet: fixed grounds, whatever the page theme */
+.sheet { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); }
+.ground { border-radius: 4px; padding: 24px 20px 16px; display: flex; gap: 12px; align-items: end; justify-content: space-around; }
+.ground.paper { background: #F6F3EC; color: #1C2230; border: 1px solid #DCD5C6; }
+.ground.night { background: #12151C; color: #E9E6DF; border: 1px solid #2E3340; }
+.ground figure { margin: 0; display: grid; justify-items: center; gap: 8px; }
+.ground figcaption { font: 400 14px var(--sans); }
+.ground img { display: block; }
+.ground .big { width: min(144px, 30vw); height: auto; }
+.m1 { display: block; width: var(--s); height: var(--s); background: currentColor; -webkit-mask: url(mark-mono.svg) center / contain no-repeat; mask: url(mark-mono.svg) center / contain no-repeat; }
+.c-ink { color: #1C2230; } .c-paper { color: #F6F3EC; }
+
+/* Swatches */
+.swatches { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (min-width: 720px) { .swatches { grid-template-columns: repeat(5, 1fr); } }
+.sw { background: var(--card); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+.sw .chip { height: 64px; display: flex; align-items: center; padding: 0 12px; font-size: 23px; font-weight: 600; border-bottom: 1px solid var(--rule); box-shadow: inset 0 0 0 1px rgba(128,128,128,.35); }
+.sw .chip.split { padding: 0; }
+.sw .chip.split span { flex: 1; height: 100%; display: flex; align-items: center; padding: 0 12px; }
+.sw .info { padding: 10px 12px; font-size: 14px; }
+.sw b { display: block; font-size: 16px; font-weight: 600; }
+.sw .mono { color: var(--muted); }
+
+/* Register sample */
+.register { width: 100%; border-collapse: collapse; font-size: 16px; }
+.register th { text-align: left; font-size: 14px; font-weight: 500; color: var(--muted); padding: 8px 12px 8px 0; border-bottom: 1px solid var(--text); }
+.register td { padding: 12px 12px 12px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.register td:first-child { white-space: nowrap; }
+@media (max-width: 560px) { .register { font-size: 14px; } }
+.register tr.hl td { background: var(--tint); }
+.register tr.hl td:first-child { box-shadow: inset 3px 0 0 var(--accent); padding-left: 9px; }
+.register th:first-child { padding-left: 12px; } .register td:first-child { padding-left: 12px; }
+.status { font-size: 14px; font-weight: 500; }
+.status.ok { color: var(--success); } .status.wait { color: var(--warning); } .status.no { color: var(--danger); }
+.table-wrap { overflow-x: auto; }
+
+/* Type specimen */
+.sizes { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin: 0; font-weight: 600; line-height: 1.2; }
+.big-num { font: 500 33px/1.15 var(--mono); }
+
+/* Voice pieces */
+.btn { display: inline-block; font: 500 16px var(--sans); padding: 9px 16px; border-radius: 4px; border: 1px solid var(--rule); background: var(--card); color: var(--text); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn.danger { background: var(--danger); border-color: var(--danger); color: var(--ground); }
+.row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.msg { border-left: 4px solid var(--rule); }
+.msg.error { border-left-color: var(--danger); }
+.msg.ok { border-left-color: var(--success); }
+.balance { display: flex; align-items: baseline; gap: 8px; margin: 12px 0 0; }
+.balance .mono { font-size: 33px; font-weight: 500; line-height: 1; }
+</style>
+</head>
+<body>
+<main>
+  <section class="card mast" aria-label="Placet">
+    <img class="mk light-only" src="mark.svg" alt="Placet mark">
+    <img class="mk dark-only" src="mark-dark.svg" alt="Placet mark">
+    <img class="wm light-only" src="wordmark.svg" alt="Placet">
+    <img class="wm dark-only" src="wordmark-dark.svg" alt="Placet">
+    <p class="tag">Every yes, on record.</p>
+  </section>
+
+  <h2>The mark</h2>
+  <p class="intro">Two squares, two people: a large solid one and a smaller outlined one on its corner. Where they meet, the outline crosses the solid in the second blue and leaves a shared block: one decision. Flat, two blues, no gradients; the one-colour version cuts through instead.</p>
+  <div class="sheet">
+    <div class="ground paper">
+      <figure><img class="big" src="mark.svg" width="144" height="144" alt="Mark, 144px"><figcaption>Large</figcaption></figure>
+      <figure><img src="mark.svg" width="48" height="48" alt="Mark, 48px"><figcaption>48 px</figcaption></figure>
+      <figure><img src="mark.svg" width="32" height="32" alt="Mark, 32px"><figcaption>32 px</figcaption></figure>
+      <figure><img src="mark.svg" width="16" height="16" alt="Mark, 16px"><figcaption>16 px</figcaption></figure>
+    </div>
+    <div class="ground night">
+      <figure><img class="big" src="mark-dark.svg" width="144" height="144" alt="Mark on dark, 144px"><figcaption>Large</figcaption></figure>
+      <figure><img src="mark-dark.svg" width="48" height="48" alt="Mark on dark, 48px"><figcaption>48 px</figcaption></figure>
+      <figure><img src="mark-dark.svg" width="32" height="32" alt="Mark on dark, 32px"><figcaption>32 px</figcaption></figure>
+      <figure><img src="mark-dark.svg" width="16" height="16" alt="Mark on dark, 16px"><figcaption>16 px</figcaption></figure>
+    </div>
+    <div class="ground paper">
+      <figure class="c-ink"><span class="m1" style="--s:72px" role="img" aria-label="Mark in ink"></span><figcaption>One colour, ink</figcaption></figure>
+      <figure><img src="wordmark.svg" height="40" width="160" alt="Wordmark" style="height:40px;width:auto"><figcaption>Wordmark</figcaption></figure>
+    </div>
+    <div class="ground night">
+      <figure class="c-paper"><span class="m1" style="--s:72px" role="img" aria-label="Mark in paper"></span><figcaption>One colour, paper</figcaption></figure>
+      <figure><img src="wordmark-dark.svg" height="40" width="160" alt="Wordmark on dark" style="height:40px;width:auto"><figcaption>Wordmark</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Palette</h2>
+  <p class="intro">Paper, white cards, ink text and one ink blue. Status colours appear on status text, message rules and the one destructive button. Every text colour passes WCAG AA (at least 4.5:1) on its ground; the ratios are in palette.md.</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#1F3A8A;color:#FFFFFF">Aa</div><div class="info"><b>Ink blue</b><span class="mono">#1F3A8A<br>accent, light</span></div></div>
+    <div class="sw"><div class="chip" style="background:#9DB2F2;color:#12151C">Aa</div><div class="info"><b>Ink blue, night</b><span class="mono">#9DB2F2<br>accent, dark</span></div></div>
+    <div class="sw"><div class="chip" style="background:#1C2230;color:#F6F3EC">Aa</div><div class="info"><b>Ink</b><span class="mono">#1C2230<br>text, light</span></div></div>
+    <div class="sw"><div class="chip" style="background:#E9E6DF;color:#12151C">Aa</div><div class="info"><b>Ink, night</b><span class="mono">#E9E6DF<br>text, dark</span></div></div>
+    <div class="sw"><div class="chip" style="background:#E7ECF8;color:#1C2230">Aa</div><div class="info"><b>Blue tint</b><span class="mono">#E7ECF8<br>highlighted row</span></div></div>
+    <div class="sw"><div class="chip" style="background:#F6F3EC;color:#1C2230">Aa</div><div class="info"><b>Paper</b><span class="mono">#F6F3EC<br>page, light</span></div></div>
+    <div class="sw"><div class="chip" style="background:#FFFFFF;color:#1C2230">Aa</div><div class="info"><b>Card white</b><span class="mono">#FFFFFF<br>cards, light</span></div></div>
+    <div class="sw"><div class="chip" style="background:#12151C;color:#E9E6DF">Aa</div><div class="info"><b>Night</b><span class="mono">#12151C<br>page, dark</span></div></div>
+    <div class="sw"><div class="chip" style="background:#1A1E27;color:#E9E6DF">Aa</div><div class="info"><b>Card, night</b><span class="mono">#1A1E27<br>cards, dark</span></div></div>
+    <div class="sw"><div class="chip" style="background:#DCD5C6;color:#1C2230">Aa</div><div class="info"><b>Rule</b><span class="mono">#DCD5C6<br>hairlines, light</span></div></div>
+    <div class="sw"><div class="chip split"><span style="background:#1D6B45;color:#FFFFFF">Aa</span><span style="background:#6FCF9A;color:#12151C">Aa</span></div><div class="info"><b>Ledger green</b><span class="mono">#1D6B45 light<br>#6FCF9A dark</span></div></div>
+    <div class="sw"><div class="chip split"><span style="background:#8A5A00;color:#FFFFFF">Aa</span><span style="background:#E5B25A;color:#12151C">Aa</span></div><div class="info"><b>Amber</b><span class="mono">#8A5A00 light<br>#E5B25A dark</span></div></div>
+    <div class="sw"><div class="chip split"><span style="background:#A8321F;color:#FFFFFF">Aa</span><span style="background:#F08A78;color:#12151C">Aa</span></div><div class="info"><b>Brick</b><span class="mono">#A8321F light<br>#F08A78 dark</span></div></div>
+  </div>
+
+  <h2>The register</h2>
+  <p class="intro">The analog touch: hairline rules like a register book, and reference numbers, dates and day counts typed in mono. The request you opened is highlighted in the blue tint.</p>
+  <div class="card table-wrap">
+    <table class="register">
+      <thead><tr><th>Request</th><th>Leave</th><th>Dates (2026)</th><th>Days</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">REQ-0142</td><td>Casual leave</td><td class="mono">03–04 Oct</td><td class="mono">2.0</td><td class="status ok">Approved</td></tr>
+        <tr class="hl"><td class="mono">REQ-0139</td><td>Earned leave</td><td class="mono">20–24 Oct</td><td class="mono">5.0</td><td class="status wait">Pending</td></tr>
+        <tr><td class="mono">REQ-0131</td><td>Sick leave</td><td class="mono">11 Sep</td><td class="mono">1.0</td><td class="status no">Rejected</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Type</h2>
+  <div class="grid">
+    <div class="card">
+      <p class="label">Headings and text · IBM Plex Sans</p>
+      <p style="font-size:33px;font-weight:600;line-height:1.15;letter-spacing:-.01em">Leave, approved.</p>
+      <p style="margin-top:12px">Pick your dates and your first approver. Placet counts the working days, skips holidays and shows your balance before you send the request.</p>
+    </div>
+    <div class="card">
+      <p class="label">Numbers and codes · IBM Plex Mono</p>
+      <p class="big-num">4.0 → 2.0</p>
+      <p>A balance dropping from 4 to 2 days, and a request reference with its date:</p>
+      <p class="mono">REQ-0142 · 03 Oct 2026</p>
+      <p class="label" style="margin-top:16px">Sizes, in pixels</p>
+      <p class="sizes"><span style="font-size:33px">Aa</span><span style="font-size:28px">Aa</span><span style="font-size:23px">Aa</span><span style="font-size:19px">Aa</span><span style="font-size:16px">Aa</span><span style="font-size:14px">Aa</span></p>
+      <p class="mono" style="color:var(--muted);font-size:14px">33 · 28 · 23 · 19 · 16 · 14</p>
+    </div>
+  </div>
+
+  <h2>Voice</h2>
+  <p class="intro">Polite, plain, exact. Say what happened, who did it, and the numbers.</p>
+  <div class="grid">
+    <div><p class="label">Welcome (home page)</p>
+      <div class="card">
+        <h3>Good morning, Asha.</h3>
+        <div class="balance"><span class="mono">4.0</span><span>days of casual leave available</span></div>
+        <div class="row"><span class="btn primary">Apply for leave</span></div>
+      </div></div>
+    <div><p class="label">Empty state</p>
+      <div class="card"><p style="margin:0">No requests are waiting for your approval.</p></div></div>
+    <div><p class="label">Error (form check)</p>
+      <div class="card msg error"><p style="margin:0">Casual leave allows at most 2 consecutive days. Shorten the dates or choose earned leave.</p></div></div>
+    <div><p class="label">Success message</p>
+      <div class="card msg ok"><p style="margin:0">Approved. 2 days of casual leave deducted from Asha's balance.</p></div></div>
+    <div><p class="label">Destructive confirm</p>
+      <div class="card">
+        <h3>Cancel this leave?</h3>
+        <p style="margin-top:8px">The 2 days return to your casual leave balance, and the cancellation is recorded in the history.</p>
+        <div class="row"><span class="btn danger">Cancel leave</span><span class="btn">Keep leave</span></div>
+      </div></div>
+  </div>
+</main>
+</body>
+</html>

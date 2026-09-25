@@ -1,0 +1,133 @@
+<!-- Moodboard round 2 for DIRECTION.md ## Brand: orange family after owner rejected green ("green is very bad ... something like orange, also give me some more options"). Six options, same mark shape, type and layout; every text colour checked for WCAG AA. Sketches to react to, not directions. -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Placet orange palettes</title>
+<style>
+@font-face{font-family:"IBM Plex Sans";src:url(fonts/ibm-plex-sans-latin.woff2) format("woff2");font-weight:100 700}
+@font-face{font-family:"IBM Plex Mono";src:url(fonts/ibm-plex-mono-400-latin.woff2) format("woff2");font-weight:400}
+:root{color-scheme:light;--pg:#EEECE7;--pt:#1E2024}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--pg:#0C0C0B;--pt:#ECE8E1}}
+:root[data-theme="dark"]{color-scheme:dark;--pg:#0C0C0B;--pt:#ECE8E1}
+*{box-sizing:border-box}body{margin:0;background:var(--pg);color:var(--pt);font:16px/1.5 "IBM Plex Sans",Arial,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:32px 16px 64px}h1{font-size:28px;font-weight:600;margin:0 0 8px}h2{font-size:23px;font-weight:600;margin:48px 0 4px}
+.why{margin:0 0 4px}.note{margin:0 0 16px;opacity:.85;font-size:14px}
+.pair{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.scr{background:var(--ground);color:var(--text);border:1px solid var(--rule);border-radius:6px;padding:16px}
+.mode{margin:0 0 8px;font-size:14px;color:var(--muted)}
+.bar{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--rule);font-size:19px}
+.nav{margin-left:auto;font-size:16px}.nav a{color:var(--link);text-decoration:underline;text-underline-offset:3px}
+.bal{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:12px;margin:12px 0}
+.lab{display:block;font-size:14px;color:var(--muted)}.num{font:400 33px/1.1 "IBM Plex Mono",monospace}
+.mono{font-family:"IBM Plex Mono",monospace}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--rule);font-size:14px}
+th{text-align:left;color:var(--muted);font-weight:500;padding:8px 10px;border-bottom:1px solid var(--text)}
+td{padding:8px 10px;border-bottom:1px solid var(--rule)}tr.sel td{background:var(--tint)}
+.st{font-weight:500}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+.err{border-left:4px solid var(--bad);background:var(--card);padding:8px 12px;margin:12px 0;font-size:14px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-block;padding:8px 14px;border-radius:4px;border:1px solid var(--rule);background:var(--card);font-weight:500}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on)}
+.btn.focus{outline:3px solid var(--focus);outline-offset:2px}
+</style></head><body><main>
+<h1>Orange palettes for Placet</h1>
+<p>Same mark, type and layout; only the colours change. Each screen shows the mark, a link ("Requests"), a highlighted row, an error, the main button and the keyboard focus ring (on "Cancel"). Every text colour passes WCAG AA (4.5:1). Statuses carry a word and a symbol as well as a colour. So statuses never look like the brand colour: Pending is slate grey-blue, Rejected is a cool berry red, and Approved stays a small green word.</p>
+<h2>1 · Burnt orange & graphite</h2><p class="why">A deep, fired orange with charcoal. Warm and confident, still clearly a work tool.</p><p class="note">Buttons: white on #B4470E (5.46:1). Links and small orange text use the same colour (4.89:1 on paper).</p><div class="pair"><div class="scr" style="--ground:#F6F2EA;--card:#FFFFFF;--text:#1E2024;--muted:#5A5D63;--rule:#E0D9CC;--ok:#2E6B34;--warn:#4F5B73;--bad:#A3213F;--accent:#B4470E;--on:#FFFFFF;--link:#B4470E;--tint:#FBE9DE;--focus:#B4470E;--m1:#B4470E;--m2:#F4925A"><p class="mode">Light</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#B4470E" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#F4925A" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div><div class="scr" style="--ground:#141312;--card:#1D1B19;--text:#ECE8E1;--muted:#A8A49D;--rule:#34302C;--ok:#7FCB86;--warn:#A9B4CC;--bad:#F28CA0;--accent:#F4925A;--on:#141312;--link:#F4925A;--tint:#3A2518;--focus:#F4925A;--m1:#F4925A;--m2:#B4470E"><p class="mode">Dark</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#F4925A" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#B4470E" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div></div>
+<h2>2 · Fervid family orange</h2><p class="why">Matches Fervid Smart's own orange #DA4F27, so Placet reads as a Fervid product.</p><p class="note">Fervid's exact orange is too light for text or white-on-orange buttons (4.09:1, fails AA). It is used for the mark and large fills; buttons and links use a darker text-safe version, #B83F1C (5.58:1).</p><div class="pair"><div class="scr" style="--ground:#F6F2EA;--card:#FFFFFF;--text:#1E2024;--muted:#5A5D63;--rule:#E0D9CC;--ok:#2E6B34;--warn:#4F5B73;--bad:#A3213F;--accent:#B83F1C;--on:#FFFFFF;--link:#B83F1C;--tint:#FCE8E0;--focus:#DA4F27;--m1:#DA4F27;--m2:#F4A07E"><p class="mode">Light</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#DA4F27" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#F4A07E" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div><div class="scr" style="--ground:#141312;--card:#1D1B19;--text:#ECE8E1;--muted:#A8A49D;--rule:#34302C;--ok:#7FCB86;--warn:#A9B4CC;--bad:#F28CA0;--accent:#FF9B6A;--on:#141312;--link:#FF9B6A;--tint:#3C2319;--focus:#FF9B6A;--m1:#FF9B6A;--m2:#DA4F27"><p class="mode">Dark</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#FF9B6A" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#DA4F27" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div></div>
+<h2>3 · Saffron & charcoal</h2><p class="why">Bright saffron as a fill, with dark ink text on it. Distinctly Indian, energetic but tidy.</p><p class="note">Saffron is too light for white text, so buttons carry dark ink on saffron (6.15:1). Links use a deep saffron-brown, #9A4A00 (5.61:1).</p><div class="pair"><div class="scr" style="--ground:#F6F2EA;--card:#FFFFFF;--text:#1E2024;--muted:#5A5D63;--rule:#E0D9CC;--ok:#2E6B34;--warn:#4F5B73;--bad:#A3213F;--accent:#E8871E;--on:#1E2024;--link:#9A4A00;--tint:#FDEFD9;--focus:#9A4A00;--m1:#E8871E;--m2:#9A4A00"><p class="mode">Light</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#E8871E" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#9A4A00" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div><div class="scr" style="--ground:#141312;--card:#1D1B19;--text:#ECE8E1;--muted:#A8A49D;--rule:#34302C;--ok:#7FCB86;--warn:#A9B4CC;--bad:#F28CA0;--accent:#F5A25F;--on:#141312;--link:#F5A25F;--tint:#3A2A17;--focus:#F5A25F;--m1:#F5A25F;--m2:#9A4A00"><p class="mode">Dark</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#F5A25F" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#9A4A00" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div></div>
+<h2>4 · Terracotta & sand</h2><p class="why">Fired clay on sand-coloured paper. Earthy and calm, the most "analog" of the set.</p><p class="note">Buttons: white on #A94B2B (5.63:1). A softer orange that sits well beside long tables.</p><div class="pair"><div class="scr" style="--ground:#F3EEE4;--card:#FFFFFF;--text:#1E2024;--muted:#5A5D63;--rule:#E0D9CC;--ok:#2E6B34;--warn:#4F5B73;--bad:#A3213F;--accent:#A94B2B;--on:#FFFFFF;--link:#A94B2B;--tint:#F7E6DD;--focus:#A94B2B;--m1:#A94B2B;--m2:#E8A07A"><p class="mode">Light</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#A94B2B" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#E8A07A" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div><div class="scr" style="--ground:#141312;--card:#1D1B19;--text:#ECE8E1;--muted:#A8A49D;--rule:#34302C;--ok:#7FCB86;--warn:#A9B4CC;--bad:#F28CA0;--accent:#E8A07A;--on:#141312;--link:#E8A07A;--tint:#38251D;--focus:#E8A07A;--m1:#E8A07A;--m2:#A94B2B"><p class="mode">Dark</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#E8A07A" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#A94B2B" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div></div>
+<h2>5 · Rust & cream</h2><p class="why">A deep rust, almost brown. The most serious and formal of the oranges.</p><p class="note">Buttons: white on #933A18 (7.35:1), the highest contrast of the set.</p><div class="pair"><div class="scr" style="--ground:#F7F3EA;--card:#FFFFFF;--text:#1E2024;--muted:#5A5D63;--rule:#E0D9CC;--ok:#2E6B34;--warn:#4F5B73;--bad:#A3213F;--accent:#933A18;--on:#FFFFFF;--link:#933A18;--tint:#F5E4DA;--focus:#933A18;--m1:#933A18;--m2:#F0A070"><p class="mode">Light</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#933A18" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#F0A070" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div><div class="scr" style="--ground:#141312;--card:#1D1B19;--text:#ECE8E1;--muted:#A8A49D;--rule:#34302C;--ok:#7FCB86;--warn:#A9B4CC;--bad:#F28CA0;--accent:#F0A070;--on:#141312;--link:#F0A070;--tint:#37241A;--focus:#F0A070;--m1:#F0A070;--m2:#933A18"><p class="mode">Dark</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#F0A070" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#933A18" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div></div>
+<h2>6 · Marigold & graphite</h2><p class="why">Charcoal structure and buttons, with marigold as the one warm highlight (from the last round).</p><p class="note">Marigold is a fill only, with ink text on it (7.34:1). Buttons are graphite, so orange marks the moments that matter rather than every action.</p><div class="pair"><div class="scr" style="--ground:#F6F2EA;--card:#FFFFFF;--text:#1E2024;--muted:#5A5D63;--rule:#E0D9CC;--ok:#2E6B34;--warn:#4F5B73;--bad:#A3213F;--accent:#23262B;--on:#FFFFFF;--link:#23262B;--tint:#FBF0D6;--focus:#8A5A00;--m1:#23262B;--m2:#E3A21A"><p class="mode">Light</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#23262B" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#E3A21A" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div><div class="scr" style="--ground:#141312;--card:#1D1B19;--text:#ECE8E1;--muted:#A8A49D;--rule:#34302C;--ok:#7FCB86;--warn:#A9B4CC;--bad:#F28CA0;--accent:#ECE8E1;--on:#141312;--link:#F0B840;--tint:#3A3120;--focus:#F0B840;--m1:#ECE8E1;--m2:#F0B840"><p class="mode">Dark</p>
+<div class="bar"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path fill="#ECE8E1" fill-rule="evenodd" d="M5 5h40v40h-40zM29 29h30v30h-30zM35 35h18v18h-18z"/><path fill="#F0B840" fill-rule="evenodd" d="M29 29h16v16h-16zM35 35h10v10h-10z"/></svg><b>Placet</b><span class="nav"><a>Requests</a></span></div>
+<div class="bal"><span class="lab">Casual leave available</span><span class="num">4.0</span></div>
+<table><tr><th>Request</th><th>Days</th><th>Status</th></tr>
+<tr><td class="mono">REQ-0142</td><td class="mono">2.0</td><td class="st ok">&#10003; Approved</td></tr>
+<tr class="sel"><td class="mono">REQ-0139</td><td class="mono">5.0</td><td class="st warn">&#9711; Pending</td></tr>
+<tr><td class="mono">REQ-0131</td><td class="mono">1.0</td><td class="st bad">&#10005; Rejected</td></tr></table>
+<p class="err">Casual leave allows at most 2 consecutive days.</p>
+<div class="btns"><span class="btn pri">Apply for leave</span><span class="btn focus">Cancel</span></div></div></div>
+</main></body></html>

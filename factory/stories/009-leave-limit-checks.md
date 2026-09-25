@@ -4,7 +4,7 @@ title: Leave limits and balance are checked before submit
 tier: core
 lane: full
 kind: feature
-status: backlog
+status: ready
 needs: ["002", "004", "005", "021", "022"]
 files: ["internal/forms/leave/policy_limits.go"]
 screen: none: no UI
