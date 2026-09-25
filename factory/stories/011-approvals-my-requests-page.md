@@ -4,15 +4,15 @@ title: I can see my requests and their status
 tier: core
 lane: full
 kind: feature
-status: building
+status: review
 needs: ["006"]
 files: ["internal/core/approvals/my_requests_page.go", "internal/core/approvals/templates/my_requests.html"]
 screen: my requests (/requests)
 check: "A signed-in employee sees a list of only their own requests with form summary, dates submitted and status, newest first"
 agent: claude-bg-011
 started: 2026-09-25 10:50
-built: 
-proved: 
+built: 2026-09-25 11:04
+proved: 2026-09-25 11:12
 reviewed: 
 merged: 
 review-rounds: 0
@@ -26,6 +26,13 @@ pr:
 A nav link "My requests" is not part of this story (the layout belongs to web); link from the page title is enough for now.
 
 ## Check
+```journey
+login E001
+goto /requests
+see My requests
+see You have not made any requests yet.
+shot my-requests
+```
 ```check
 go test -count=1 -run 'MyRequests' ./internal/core/approvals/
 ```
