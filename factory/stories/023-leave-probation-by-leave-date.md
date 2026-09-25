@@ -4,15 +4,15 @@ title: Probation is judged by the leave dates, not the day of applying
 tier: core
 lane: full
 kind: feature
-status: proving
+status: review
 needs: ["008"]
 files: ["internal/forms/leave/policy_dates.go"]
 screen: none: no UI
 check: "An employee on probation can apply for Earned Leave that starts on or after their probation end date, and is refused for Earned Leave that starts before it"
 agent: claude-bg-023
 started: 2026-09-25 15:42
-built: 2026-09-25 16:00
-proved: 
+built: 2026-09-25 15:43
+proved: 2026-09-25 15:44
 reviewed: 
 merged: 
 review-rounds: 0
