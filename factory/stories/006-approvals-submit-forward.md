@@ -38,3 +38,4 @@ Approve/reject (010), notifications (Usable), pages.
 
 ## Constraints
 Status moves through `Next` from story 002. Every read inside the transaction uses `txApp`.
+Before calling `Next`, check the actor against the transition table's "who" (current approver / requester / HR admin, active) inside the transaction; one test per role that fails if the check is removed.

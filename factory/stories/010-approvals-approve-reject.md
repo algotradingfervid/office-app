@@ -38,3 +38,4 @@ Cancellations, reassign (Usable). Pages.
 
 ## Constraints
 Every read inside the transaction uses `txApp`.
+Before calling `Next`, check the actor against the transition table's "who" (current approver / requester / HR admin, active) inside the transaction; one test per role that fails if the check is removed.

@@ -37,3 +37,4 @@ Limits and balance (009). Aggregation into `Validate` (012).
 
 ## Constraints
 Messages are plain sentences an employee understands.
+Rule fields use 0 two ways (see 003's migration comment): 0 = none/no limit for days_per_year, max_consecutive_days, yearly_cap, max_times_per_employment, attachment_after_days, min_notice_days; 0 = a real zero for max_backdate_days and carry_forward_cap. Ledger `days` cannot be 0 (PocketBase required number): never write a zero-day entry.
