@@ -4,7 +4,7 @@ title: A request can be submitted to a first approver and forwarded
 tier: core
 lane: full
 kind: feature
-status: proving
+status: review
 needs: ["002"]
 files: ["internal/core/approvals/service_submit.go"]
 screen: none: no UI
@@ -12,7 +12,7 @@ check: "Submitting creates a pending request with a submitted step for the chose
 agent: claude-bg-006
 started: 2026-09-25 10:21
 built: 2026-09-25 10:25
-proved: 
+proved: 2026-09-25 10:27
 reviewed: 
 merged: 
 review-rounds: 0
